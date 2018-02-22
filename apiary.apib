@@ -1167,69 +1167,61 @@ The Templates object.
     + Body
     
 
-                    {
-                        "id": "000000000000000000156",
-                        "template_type": "directmail",
-                        "template_name": "Maintenance Combo",
-                        "template_number": 100,
-                        "size": "6 x 8",
-                        "thumbnail": "http://chryslerondemandsmart.com/Assets/Templates/Thumbnail/139_Maintenance_Combo_2017.jpg",
-                        "preview": "http://chryslerondemandsmart.com/Assets/Templates/preview/139_Maintenance_Combo_2017.jpg",
-                        "highres": "http://chryslerondemandsmart.com/Assets/Templates/highres/139_Maintenance_Combo_2017.jpg",
-                        "screen": "http://chryslerondemandsmart.com/Assets/Templates/screen/139_Maintenance_Combo_2017.jpg",
-                        "folders": [
-                            {
-                                "folder_id": "0000000000000000001",
-                                "folder_name": "Brakes"
-                            }                           
-                        ],
-                        "options": [
-                            {
-                            "format": "directmail",
-                            "pricing": [
-                                {
-                                    "quantity": "1-10,000",
-                                    "price": "$0.45/piece"
-                                },
-                                {
-                                    "quantity": "10,001-25,000",
-                                    "price": "$0.39/piece"
-                                },
-                                {
-                                    "quantity": "25,001-50,000",
-                                    "price": "$0.28/piece"
-                                },
-                                {
-                                    "quantity": "50,001 +",
-                                    "price": "$0.21/piece"
-                                }                            
-                                ]
+            {
+                "id": "000000000000000000156",
+                "template_type": "directmail",
+                "template_name": "Maintenance Combo",
+                "template_number": 100,
+                "size": "6 x 8",
+                "thumbnail": "http://chryslerondemandsmart.com/Assets/Templates/Thumbnail/139_Maintenance_Combo_2017.jpg",
+                "preview": "http://chryslerondemandsmart.com/Assets/Templates/preview/139_Maintenance_Combo_2017.jpg",
+                "highres": "http://chryslerondemandsmart.com/Assets/Templates/highres/139_Maintenance_Combo_2017.jpg",
+                "screen": "http://chryslerondemandsmart.com/Assets/Templates/screen/139_Maintenance_Combo_2017.jpg",
+                "folders": [{
+                    "folder_id": "0000000000000000001",
+                    "folder_name": "Brakes"
+                }],
+                "options": [{
+                    "format": "directmail",
+                        "pricing": [{
+                                "quantity": "1-10,000",
+                                "price": "$0.45/piece"
                             },
                             {
-                            "format": "printship",
-                            "pricing": [
-                                {
-                                    "quantity": "1-20,000",
-                                    "price": "$0.21/piece"
-                                }
-                                ]
+                                "quantity": "10,001-25,000",
+                                "price": "$0.39/piece"
                             },
                             {
-                            "format": "download",
-                            "pricing": [
-                                {
-                                    "quantity": "Any",
-                                    "price": "$0.03/piece"
-                                }                            
-                                ]
+                                "quantity": "25,001-50,000",
+                                "price": "$0.28/piece"
+                            },
+                            {
+                                "quantity": "50,001 +",
+                                "price": "$0.21/piece"
                             }
-                        },
-                        "active": true,
-                        "date_created": "2017-09-15T14:38:16+00:00",
-                        "last_changed": "2017-09-15T14:38:16+00:00",
-                        "created_by": "",
-                        "modified_by": ""
+                        ]
+                    },
+                    {
+                        "format": "printship",
+                        "pricing": [{
+                            "quantity": "1-20,000",
+                            "price": "$0.21/piece"
+                        }]
+                    },
+                    {
+                        "format": "download",
+                        "pricing": [{
+                            "quantity": "Any",
+                            "price": "$0.03/piece"
+                        }]
                     }
+                ],
+                "active": true,
+                "date_created": "2017-09-15T14:38:16+00:00",
+                "last_changed": "2017-09-15T14:38:16+00:00",
+                "created_by": "",
+                "modified_by": ""
+            }
 
 ### Retrieve a single template [GET /v1/templates/{template_id}]
 
