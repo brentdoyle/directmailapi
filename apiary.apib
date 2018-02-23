@@ -30,50 +30,50 @@ The Campaign object.
 + Model (application/json)
 
     + Body
-    
-            {
-                "id": "1111111",
-                "campaign_type": "scheduled",
-                "name": "Your campaign name",
-                "mail_type": "mail",
-                "recipient_type": "single",
-                "recipients": {
-                    "recipient_id": "",
-                    "list_type": "upload",
-                    "list_id": "123",
-                    "recipient_count": "435"
-                },
-                "template": {
-                    "template_id": "11wac8a65e64c994c4416d8u0",
-                    "template_name": "Big 15% off sale"
-                },
-                "settings": {
-                    "from_address": {
-                        "id": "11111111111111",
-                        "name": "Joe Smith",
-                        "company": "Acme Corp",
-                        "phone": "3135551111",
-                        "email": "joe@acme.com",
-                        "address_1": "123 Main St",
-                        "address_2": "Apt 2",
-                        "address_city": "Boston",
-                        "address_state": "MA",
-                        "address_zip": "555555",
-                        "address_country": "US",
-                        "date_created": "2015-04-27T18:52:44.725Z"
+        
+                {
+                    "id": "1111111",
+                    "campaign_type": "scheduled",
+                    "name": "Your campaign name",
+                    "mail_type": "mail",
+                    "recipient_type": "single",
+                    "recipients": {
+                        "recipient_id": "",
+                        "list_type": "upload",
+                        "list_id": "123",
+                        "recipient_count": "435"
                     },
-                    "scheduled_send_date": "2017-05-06",
-                    "scheduled_send_time": "T18:52:44.725Z",
-                    "actual_send_datetime": "2015-04-27T18:52:44.725Z",
-                    "postage_type": "Standard",
-                    "order_id": "aaaaaaaaa",
-                    "status": "completed"
-                },
-                "date_created": "2015-09-15T14:38:16+00:00",
-                "last_changed": "2015-09-15T14:38:16+00:00",
-                "created_by": "",
-                "modified_by": ""
-            }
+                    "template": {
+                        "template_id": "11wac8a65e64c994c4416d8u0",
+                        "template_name": "Big 15% off sale"
+                    },
+                    "settings": {
+                        "from_address": {
+                            "id": "11111111111111",
+                            "name": "Joe Smith",
+                            "company": "Acme Corp",
+                            "phone": "3135551111",
+                            "email": "joe@acme.com",
+                            "address_1": "123 Main St",
+                            "address_2": "Apt 2",
+                            "address_city": "Boston",
+                            "address_state": "MA",
+                            "address_zip": "555555",
+                            "address_country": "US",
+                            "date_created": "2015-04-27T18:52:44.725Z"
+                        },
+                        "scheduled_send_date": "2017-05-06",
+                        "scheduled_send_time": "T18:52:44.725Z",
+                        "actual_send_datetime": "2015-04-27T18:52:44.725Z",
+                        "postage_type": "Standard",
+                        "order_id": "aaaaaaaaa",
+                        "status": "completed"
+                    },
+                    "date_created": "2015-09-15T14:38:16+00:00",
+                    "last_changed": "2015-09-15T14:38:16+00:00",
+                    "created_by": "",
+                    "modified_by": ""
+                }
 
 ### Retrieve a single campaign [GET /v1/campaigns/{campaign_id}]
 
@@ -1282,6 +1282,38 @@ The Templates object.
 
         {
             "error": "Resource not found" 
+        }
+        
+### Edit a section [PATCH /v1/templates/{template_id}/sections/{section_id}]
+
++ Parameters
+    + template_id: 1 (required, string) - ID of the template in form of a string
+    + section_id: 1 (required, string) - ID of the section in form of a string
+    
++ Request (application/json)
+
+            {
+                "json": "{ \"type\": \"image\", \"id\": \"11wac8a65e64c994c4416d8u0\", \"name\": \"Background One\", \"contentType\": \"image\", \"originX\": \"left\", \"originY\": \"top\", \"left\": 0, \"top\": 0, \"width\": 2550, \"height\": 1812, \"fill\": \"#ffffff\", \"stroke\": null, \"strokeWidth\": 0, \"strokeDashArray\": null, \"strokeLineCap\": \"butt\", \"strokeLineJoin\": \"miter\", \"strokeMiterLimit\": 10, \"scaleX\": 1, \"scaleY\": 1, \"angle\": 0, \"flipX\": false, \"flipY\": false, \"opacity\": 1, \"shadow\": null, \"visible\": true, \"clipTo\": null, \"backgroundColor\": \"\", \"fillRule\": \"nonzero\", \"globalCompositeOperation\": \"source-over\", \"transformMatrix\": null, \"skewX\": 0, \"skewY\": 0, \"crossOrigin\": \"\", \"alignX\": \"none\", \"alignY\": \"none\", \"meetOrSlice\": \"meet\", \"selectable\": false, \"excludeFromExport\": false, \"lockMovementX\": true, \"lockMovementY\": true, \"lockScalingX\": true, \"lockScalingY\": true, \"src\": \"../assets/img/templates/highres/template_1_front.png\", \"filters\": [{ \"type\": \"Resize\", \"scaleX\": 0.34, \"scaleY\": 0.34, \"resizeType\": \"sliceHack\", \"lanczosLobes\": 3 }], \"resizeFilters\": [] }"
+            }
+
+
++ Response 200
+
+            {
+                "json": "{ \"type\": \"image\", \"id\": \"11wac8a65e64c994c4416d8u0\", \"name\": \"Background One\", \"contentType\": \"image\", \"originX\": \"left\", \"originY\": \"top\", \"left\": 0, \"top\": 0, \"width\": 2550, \"height\": 1812, \"fill\": \"#ffffff\", \"stroke\": null, \"strokeWidth\": 0, \"strokeDashArray\": null, \"strokeLineCap\": \"butt\", \"strokeLineJoin\": \"miter\", \"strokeMiterLimit\": 10, \"scaleX\": 1, \"scaleY\": 1, \"angle\": 0, \"flipX\": false, \"flipY\": false, \"opacity\": 1, \"shadow\": null, \"visible\": true, \"clipTo\": null, \"backgroundColor\": \"\", \"fillRule\": \"nonzero\", \"globalCompositeOperation\": \"source-over\", \"transformMatrix\": null, \"skewX\": 0, \"skewY\": 0, \"crossOrigin\": \"\", \"alignX\": \"none\", \"alignY\": \"none\", \"meetOrSlice\": \"meet\", \"selectable\": false, \"excludeFromExport\": false, \"lockMovementX\": true, \"lockMovementY\": true, \"lockScalingX\": true, \"lockScalingY\": true, \"src\": \"../assets/img/templates/highres/template_1_front.png\", \"filters\": [{ \"type\": \"Resize\", \"scaleX\": 0.34, \"scaleY\": 0.34, \"resizeType\": \"sliceHack\", \"lanczosLobes\": 3 }], \"resizeFilters\": [] }"
+            }
+
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found"
+        }
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
         }
 
 ### Retrieve a single template's sections [GET /v1/templates/{template_id}/sections]
