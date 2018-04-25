@@ -13,6 +13,95 @@ The AMP Direct Mail API 1.0 reference
 
 TBD for authenticated access.
 
+## Custom Field Data Types
+**Integer/Number**
+
+Must be whole digits: e.g.
+`"integer--Smog-Level": 4`
+
+They can also be specified as strings as long as there is nothing other than the number in the field, e.g.
+`"integer--Smog--Level": "Monkey" --- this would cause an error`
+`"integer--Smog--Level": "2567" --- this is fine`
+`"integer--Smog--Level": "$2567" --- this would cause an error`
+
+Note that passing through null is also acceptable for any kind of field, including numbers. 
+This means the field would be considered "blank".
+
+**Floats/Number**
+
+Floats with decimal must be a valid number: e.g.
+`"float--Smog--Level": 4.01`
+
+They can also be specified as strings as long as there is nothing other than the number in the field, e.g.
+`"integer--Smog--Level": "Monkey" --- this would cause an error`
+`"integer--Smog--Level": "2567.58" --- this is fine`
+`"integer--Smog--Level": "2567" --- this is also fine`
+
+Note that passing through null is also acceptable for any kind of field, including floats. This means the field 
+would be considered "blank".
+
+**Strings**
+
+Strings are pretty straight-forward: e.g. 
+`"string--My--String": "Hello how are you going"`
+
+We accept any valid UTF-8 string.
+
+**Dates**
+
+Please see the next section of this document for a full description of dates.
+
+## Date Formats
+We accepts dates in the ISO8601 format. Here is a description of the format for dates as 
+used in the API taken directly from the standard:
+
+
+The formats are as follows. 
+
+Exactly the components shown here must be present, with exactly this punctuation. 
+Note that the "T" appears literally in the string, to indicate the beginning of the time element, 
+as specified in ISO 8601.
+
+
+`Complete date: YYYY-MM-DD (eg 2018-07-16)`
+
+`Complete date plus hours and minutes: YYYY-MM-DDThh:mmTZD (eg 2018-07-16T19:20+01:00)`
+
+`Complete date plus hours, minutes and seconds: YYYY-MM-DDThh:mm:ssTZD (eg 2018-07-16T19:20:30+01:00)`
+
+`Complete date plus hours, minutes, seconds and a decimal fraction of a second YYYY-MM-DDThh:mm:ss.sTZD (eg 2018-07-16T19:20:30.45+01:00)`
+
+Where:
+
+* YYYY = four-digit year
+* MM   = two-digit month (01=January, etc.)
+* DD   = two-digit day of month (01 through 31)
+* hh   = two digits of hour (00 through 23) (am/pm NOT allowed)
+* mm   = two digits of minute (00 through 59)
+* ss   = two digits of second (00 through 59)
+* s    = one or more digits representing a decimal fraction of a second
+* TZD  = time zone designator (Z or +hh:mm or -hh:mm)
+     
+There are two ways of handling time zone offsets:
+
+Times are expressed in UTC (Coordinated Universal Time), with a special UTC designator ("Z"). 
+Times are expressed in local time, together with a time zone offset in hours and minutes. 
+A time zone offset of "+hh:mm" indicates that the date/time uses a local time zone which 
+is "hh" hours and "mm" minutes ahead of UTC. A time zone offset of "-hh:mm" indicates that 
+the date/time uses a local time zone which is "hh" hours and "mm" minutes behind UTC.
+
+
+Examples of valid dates are:
+
+`"Birthday": "2018-12-01"`
+
+`"Appointment": "2018-10-10T13:50:00Z"`
+
+
+We also accept dates in simple American format such as:
+
+`"SomeDate":"12/30/2018"`
+
 
 ## Error States
 
@@ -386,7 +475,7 @@ The List object.
                 "id": "44dseq098531",
                 "name": "Happy People List",
                 "list_type": "mail",
-                "total_count": 9203,
+                "total_count": 0,
                 "campaign_last_sent": "",
                 "last_mem_add_date": "2017-09-23T17:27:16+00:00",
                 "date_created": "2017-09-15T14:38:16+00:00",
