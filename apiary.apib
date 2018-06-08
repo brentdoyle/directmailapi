@@ -2,9 +2,9 @@ FORMAT: 1A
 
 HOST: https://private-8e550-directmail.apiary-mock.com
 
-# Direct Mail API Documentation
+# Adbuilder API Documentation
 
-The AMP Direct Mail API 1.0 reference
+The Adbuilder API 1.0 reference
 (Alt-0 collapses all on Windows)
 (Command-Option-Control-0 collapses all on Mac)
 
@@ -159,6 +159,179 @@ We also accept dates in simple American format such as:
 The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
 
 
+# Group Products
+Group of all product-related resources.
+
+## Products [/v1/products/{product_id}]
+
+The Product object.
+
++ Model (application/json)
+
+    + Body
+        
+                {
+                    "id": "1111111",
+                    "name": "",
+                    description: "",
+                    "price": [
+                      {
+                        "amount": 5891,
+                        "currency": "USD",
+                        "includes_tax": true
+                      }
+                    ],
+                    "commodity_type": "physical",
+                    "variation_matrix": [{
+                        "id": 11111111,,
+                        "":
+                    }
+                    ],
+                    "relationships": {
+                        "categories": {
+                            "data": [
+                                {
+                                    "type": "category",
+                                    "id": "8550c943-85c2-4239-a8a4-bfa255a38f08"
+                                }
+                            ]
+                        },
+                        "collections": {
+                            "data": [
+                                {
+                                    "type": "collection",
+                                    "id": "ced85f3a-f1d2-47b5-ada5-bcbc43eb59eb"
+                                }
+                            ]
+                        },
+                        "main_image": {
+                            "data": {
+                                "type": "main_image",
+                                "id": "54ef64a7-8a43-4398-acf2-66aa3c038136"
+                            }
+                        }
+                    },
+                    "date_created": "2015-09-15T14:38:16+00:00",
+                    "last_changed": "2015-09-15T14:38:16+00:00",
+                    "created_by": "",
+                    "modified_by": ""
+                }
+
+### Retrieve a single product [GET /v1/products/{product_id}]
+
++ Parameters
+    + product_id: 1 (required, string) - ID of the product in form of a string
+    
++ Response 200
+
+    [Products][]
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+
+### Edit a product [PATCH /v1/products/{product_id}]
+
++ Parameters
+    + product_id: 1 (required, string) - ID of the product in form of a string
+    
++ Request (application/json)
+
+            {
+                "name": "new name"
+            }
+
+
++ Response 200
+
+    [Products][]
+
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found"
+        }
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Delete a product [DELETE /v1/products/{product_id}]
+
++ Parameters
+    + product_id: 1 (required, string) - ID of the product in form of a string
+    
++ Response 200
+
+        { 
+            "result": true
+        }
+
+### Create a product [POST /v1/products]
+
++ Request (application/json)
+
+            {
+                "id": "1111111",
+                "name": "Your campaign name"
+                },
+                "date_created": "2015-09-15T14:38:16+00:00",
+                "last_changed": "2015-09-15T14:38:16+00:00",
+                "created_by": "",
+                "modified_by": ""
+            }
+            
+            
++ Response 201
+
+    [Products][]
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+
+# Products Collection [/v1/products{?q}]
+
+Get a list of all products.
+
++ Model (application/json)
+
+    + Body
+    
+                {
+                  "products": [
+                        {
+                          "id":"11111",
+                          "name":"product name here"
+                        }
+                        ],
+                        "paging": {
+                            "total": 25,
+                            "page": 1,
+                            "pages": 3
+                        }
+                    }
+
+### List all products [GET /v1/products{?q}]
+
++ Parameters
+
+    + q (optional, string) ... Keyword query to search for products.
+
+
++ Response 200
+
+    [Products Collection][]
+    
+    
 
 # Group Campaigns
 Group of all campaign-related resources.
@@ -1424,7 +1597,7 @@ The Templates object.
             "error": "Resource not found" 
         }
         
-### Edit a section [PATCH /v1/templates/{template_id}/sections/{section_id}]
+### Edit a template sections [PATCH /v1/templates/{template_id}/sections/{section_id}]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the template in form of a string
@@ -1456,7 +1629,7 @@ The Templates object.
             "error": "Resource modification failed"
         }
 
-### Retrieve a single template's sections [GET /v1/templates/{template_id}/sections]
+### Retrieve a single template sections [GET /v1/templates/{template_id}/sections]
 
 + Parameters
 
@@ -1581,7 +1754,7 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-### DUPLICATE Retrieve a single coupon template's sections [GET /v1/templates/coupons/{template_id}/sections]
+### DUPLICATE Retrieve a single coupon template sections [GET /v1/templates/coupons/{template_id}/sections]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -2959,8 +3132,8 @@ Get a list of all template folders.
     
    
 
-# Group Assets
-Group of all asset-related resources.
+# Group Asset Library
+Group of all asset library-related resources.
 
 ### Assets [/v1/assets/{asset_id}]
 
@@ -2995,7 +3168,7 @@ The Asset object.
                     "modified_by": ""
                 }
 
-### Retrieve a single asset [GET /v1/assets/{asset_id}]
+### Retrieve a single asset library item [GET /v1/assets/{asset_id}]
 
 + Parameters
     + asset_id: 1 (required, string) - ID of the asset in form of a string
@@ -3010,7 +3183,7 @@ The Asset object.
             "error": "Resource not found" 
         }
 
-### Edit an asset [PATCH /v1/assets/{asset_id}]
+### Edit an asset library item [PATCH /v1/assets/{asset_id}]
 
 + Parameters
     + asset_id: 1 (required, string) - ID of the asset in form of a string
@@ -3039,7 +3212,7 @@ The Asset object.
             "error": "Resource modification failed"
         }
 
-### Delete an asset [DELETE /v1/assets/{asset_id}]
+### Delete an asset library item [DELETE /v1/assets/{asset_id}]
 
 + Parameters
     + asset_id: 1 (required, string) - ID of the asset in form of a string
@@ -3050,7 +3223,7 @@ The Asset object.
             "result": true
         }
 
-### Create an asset [POST /v1/assets]
+### Create an asset library item [POST /v1/assets]
 
 asset_binary - The raw binary file content being uploaded. Cannot be used with the asset_string parameter.
 asset_string - The base64-encoded file content being uploaded. Cannot be used with the asset__binary parameter.
@@ -3089,7 +3262,7 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
             "error": "Resource modification failed"
         }
 
-### Create an asset folder [POST /v1/assets/folders]
+### Create an asset library folder [POST /v1/assets/folders]
 
 + Request
 
@@ -3110,7 +3283,7 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
             "error": "Resource modification failed"
         }
 
-### Edit an asset folder [PATCH /v1/assets/folders/{folder_id}]
+### Edit an asset library folder [PATCH /v1/assets/folders/{folder_id}]
 
 + Parameters
     + folder_id: 1 (required, string) - ID of the asset folder in form of a string
@@ -3131,7 +3304,7 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
             "error": "Resource modification failed"
         }
 
-### Delete an asset folder [DELETE /v1/assets/folders/{folder_id}]
+### Delete an asset library folder [DELETE /v1/assets/folders/{folder_id}]
 
 + Parameters
     + folder_id: 1 (required, string) - ID of the asset folder in form of a string
@@ -3333,7 +3506,7 @@ Get a list of all assets.
                 }
             }
 
-### List all assets by type [GET /v1/assets/types/{asset_type}{?q}]
+### List all asset library items by type [GET /v1/assets/types/{asset_type}{?q}]
 
 + Parameters
 
@@ -3436,7 +3609,7 @@ Get a list of all assets.
                 }
             }
 
-### List all assets by type in a folder [GET /v1/assets/types/{asset_type}/folders/{folder_id}]
+### List all asset library items by type in a folder [GET /v1/assets/types/{asset_type}/folders/{folder_id}]
 
 + Parameters
 
@@ -3505,7 +3678,7 @@ Get a list of all assets.
                 }
             }
     
-### List all assets for a template section [GET /v1/assets/templates/{template_id}/sections/{section_id}]
+### List all asset library items for a template section [GET /v1/assets/templates/{template_id}/sections/{section_id}]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -3515,7 +3688,7 @@ Get a list of all assets.
 
     [Assets Collection][]
 
-### List all asset folders by type [GET /v1/assets/types/{asset_type}/folders]
+### List all asset library folders by type [GET /v1/assets/types/{asset_type}/folders]
 
 + Parameters
 
@@ -3551,6 +3724,368 @@ Get a list of all assets.
                 }
             }
 
+
+# Group Shopping Cart [/v1/carts/]
+Group of all shopping cart-related resources.
+
+### Cart [/v1/carts/{cart_id}]
+
+The cart object.
+
++ Parameters
+    + cart_id: 1 (required, string) - ID of the cart in form of a string
+    
+    
++ Model (application/json)
+
+    + Body
+    
+                {
+                  "cart": [
+                    {
+                      "currency": {},
+                      "coupons": [
+                        {
+                          "code": ""
+                        }
+                      ],
+                      "discounts": [
+                        {}
+                      ],
+                      "line_tems": [
+                        {
+                          "physical_items": [
+                            {
+                              "quantity": 0,
+                              "discounts": [
+                                {}
+                              ],
+                              "options": [
+                                {}
+                              ]
+                            }
+                          ],
+                          "digital_items": [
+                            {
+                              "quantity": 0,
+                              "imageURL": "",
+                              "discounts": [
+                                {}
+                              ],
+                              "options": [
+                                {}
+                              ]
+                            }
+                          ],
+                          "gift_certificates": [
+                            {
+                              "id": "",
+                              "theme": "",
+                              "amount": 0,
+                              "sender": {},
+                              "recipient": {}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+
+### Get a cart [GET /v1/carts/{cart_id}]
+
+    + Parameters
+        + cart_id: 1 (required, string) - ID of the cart in form of a string
+    
++ Response 200
+
+    [Cart][]
+
+        
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Create a cart [POST /v1/carts?quantity={quantity}&product_id={product_id}&variant_id={variant_id}&price={price}&coupon_code={coupon_code}&amount={ampount}&quantity={quantity}&message={message}]
+
+    + Parameters
+    
+    + cart_id: 1 (required, string) - ID of the cart in form of a string
+    + item_id: 1 (required, string) - ID of the item in form of a string
+    + quantity: 1 (required, string) - item quantity in form of a integer
+    + product_id: 1 (required, string) - ID of the product in form of a string
+    + variant_id: 1 (required, string) - ID of the variant in form of a string
+    + price: 1 (required, string) - price of the item in form of a float
+    + coupon_code: 1 (required, string) - code in form of a string
+    + amount: 1 (required, string) - price of the item in form of a float 
+    + quantity: 1 (required, string) - discount quantity in form of a integer
+    + message: 1 (required, string) - coupon message in form of a string  
+    
++ Response 201
+
+    [Cart][]
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource creation failed"
+        }
+
+### Delete a cart [DELETE /v1/carts/{cart_id}]
+
++ Parameters
+    + cart_id: 1 (required, string) - ID of the cart in form of a string
+
++ Response 200
+
+        { 
+            "result": true
+        }
+        
+### Add item to cart [POST /v1/carts/{cart_id}/items?quantity={quantity}&product_id={product_id}&variant_id={variant_id}&price={price}&coupon_code={coupon_code}&amount={ampount}&quantity={quantity}&message={message}]
+
+    + Parameters
+    
+    + cart_id: 1 (required, string) - ID of the cart in form of a string
+    + item_id: 1 (required, string) - ID of the item in form of a string
+    + quantity: 1 (required, string) - item quantity in form of a integer
+    + product_id: 1 (required, string) - ID of the product in form of a string
+    + variant_id: 1 (required, string) - ID of the variant in form of a string
+    + price: 1 (required, string) - price of the item in form of a float
+    + coupon_code: 1 (required, string) - code in form of a string
+    + amount: 1 (required, string) - price of the item in form of a float 
+    + quantity: 1 (required, string) - discount quantity in form of a integer
+    + message: 1 (required, string) - coupon message in form of a string  
+    
++ Response 201
+
+            {
+              "currency": {},
+              "coupons": [
+                {
+                  "code": ""
+                }
+              ],
+              "discounts": [
+                {}
+              ],
+              "line_items": [
+                {
+                  "physical_items": [
+                    {
+                      "quantity": 0,
+                      "discounts": [
+                        {}
+                      ],
+                      "options": [
+                        {}
+                      ]
+                    }
+                  ],
+                  "digital_items": [
+                    {
+                      "quantity": 0,
+                      "image_URL": "",
+                      "discounts": [
+                        {}
+                      ],
+                      "options": [
+                        {}
+                      ]
+                    }
+                  ],
+                  "gift_certificates": [
+                    {
+                      "id": "",
+                      "amount": 0
+                    }
+                  ]
+                }
+              ]
+             }
+
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource creation failed"
+        }
+
+### Update an item in a cart [PATCH /v1/carts/{cart_id}/items/{item_id}?quantity={quantity}&product_id={product_id}&variant_id={variant_id}&price={price}&coupon_code={coupon_code}&amount={ampount}&quantity={quantity}&message={message}]
+
+    + Parameters
+    
+    + cart_id: 1 (required, string) - ID of the cart in form of a string
+    + item_id: 1 (required, string) - ID of the item in form of a string
+    + quantity: 1 (required, string) - item quantity in form of a integer
+    + product_id: 1 (required, string) - ID of the product in form of a string
+    + variant_id: 1 (required, string) - ID of the variant in form of a string
+    + price: 1 (required, string) - price of the item in form of a float
+    + coupon_code: 1 (required, string) - code in form of a string
+    + amount: 1 (required, string) - price of the item in form of a float 
+    + quantity: 1 (required, string) - discount quantity in form of a integer
+    + message: 1 (required, string) - coupon message in form of a string     
+
++ Request (application/json)
+
+            {
+              "line_item": {
+                "quantity": 0
+              },
+              "gift_certificate": {
+                "name": "",
+                "amount": 0,
+                "quantity": 0
+              }
+            }
+
++ Response 200
+
+    [Account][]
+
+        
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Delete a line item from a cart [DELETE /v1/carts/{cart_id}/items/{item_id}]
+
++ Parameters
+    + cart_id: 1 (required, string) - ID of the cart in form of a string
+    + item_id: 1 (required, string) - ID of the item in form of a string    
+
+
++ Response 200
+
+        { 
+            "result": true
+        }
+
+
+# Group Orders [/v1/orders/]
+Group of all order-related resources.
+
+The Order API is intended to be accessed from the order confirmation page immediately after a successful checkout. 
+It allows you to access most of the details of an order that was just placed.
+
+### Order [/v1/order/{order_id}]
+
+The Order object.
+
+    + Parameters
+        + order_id: 1 (required, string) - ID of the order in form of a string
+        
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "order": {
+                  "currency": {
+                    "name": "US Dollars",
+                    "code": "USD",
+                    "symbol": "$",
+                    "decimal_places": 2
+                  },
+                  "coupons": [
+                    {
+                      "id": "1",
+                      "code": "abcde1",
+                      "display_name": "$5.00 off the order total",
+                      "coupon_type": "per_total_discount",
+                      "discounted_amount": 5
+                    }
+                  ],
+                  "discounts": [
+                    {
+                      "name": "Free Shipping",
+                      "discounted_amount": 7
+                    }
+                  ],
+                  "line_items": [
+                    {
+                      "physical_items": [
+                        {
+                          "id": "8235d47d-718b-4b9c-89a4-5fa1ee76a0b4",
+                          "variant_id": 182,
+                          "product_id": 118,
+                          "name": "BigCommerce Hoodies",
+                          "url": "http://your-store.mybigcommerce.com/hoodies/",
+                          "quantity": 2,
+                          "is_taxable": true,
+                          "image_url": "https://cdn8.bigcommerce.com/some-string/themes/ClassicNext/images/ProductDefault.gif",
+                          "discounts": [
+                            {
+                              "name": "Free Shipping",
+                              "discountedAmount": 7
+                            }
+                          ],
+                          "discount_amount": 0,
+                          "coupon_amount": 0,
+                          "list_price": 100,
+                          "sale_price": 100,
+                          "extended_list_price": 100,
+                          "extended_sale_price": 100,
+                          "type": "physical",
+                          "is_shipping_required": true
+                        }
+                      ],
+                      "digital_items": [
+                        {
+                          "quantity": 0,
+                          "discounts": [
+                            {
+                              "name": "Free Shipping",
+                              "discounted_amount": 7
+                            }
+                          ],
+                          "download_file_urls": []
+                        }
+                      ],
+                      "gift_certificate": [
+                        {
+                          "type": "giftCertificate"
+                        }
+                      ]
+                    }
+                  ],
+                  "billingAddress": {
+                    "country": "USA",
+                    "email": "janedoe@email.com",
+                    "firstName": "Jane",
+                    "lastName": "Doe",
+                    "company": "BigCommerce",
+                    "street1": "123 Main Street",
+                    "street2": "Apt 1",
+                    "city": "Austin",
+                    "countryCode": "USA",
+                    "postalCode": "12345",
+                    "customFields": [
+                      {}
+                    ]
+                  },
+                  "status": "INCOMPLETE"
+                }
+            }
+
+### Get an order [GET /v1/orders/{order_id}]
+
+    + Parameters
+        + order_id: 1 (required, string) - ID of the order in form of a string
+    
++ Response 200
+
+    [Order][]
+
+        
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
 
 
 # Group Accounts
