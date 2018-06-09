@@ -173,20 +173,55 @@ The Product object.
                 {
                     "id": "1111111",
                     "name": "",
-                    description: "",
-                    "price": [
-                      {
-                        "amount": 5891,
-                        "currency": "USD",
-                        "includes_tax": true
-                      }
-                    ],
+                    "description": "",
                     "commodity_type": "physical",
-                    "variation_matrix": [{
-                        "id": 11111111,,
-                        "":
-                    }
+                    "price": [
+                        {
+                            "amount": 5891,
+                            "currency": "USD",
+                            "includes_tax": true
+                        }
+                    ].
+                    "bulk_pricing": [
+                        {
+                            "quantity_min": 10,
+                            "quantity_max": 50,
+                            "type": "price",
+                            "amount": 10,
+                            "id": 1
+                        },
+                        {
+                            "quantity_min": 51,
+                            "quantity_max": 100,
+                            "type": "price",
+                            "amount": 8,
+                            "id": 2
+                        }                            
                     ],
+                    "variants": [
+                        {
+                            "cost_price": 12,
+                            "price": 14,
+                            "weight": 22,
+                            "width": 40,
+                            "height": 100,
+                            "depth": 4,
+                            "is_free_shipping": false,
+                            "id": 156,
+                            "product_id": 77,
+                            "option_values": [
+                                {
+                                  "option_display_name": "Color",
+                                  "label": "Color",
+                                  "id": 107,
+                                  "option_id": 124
+                                }
+                            ],
+                            "calculated_price": 49.99
+                        }
+                    ],
+                    "base_variant_id": 22
+                    },                    
                     "relationships": {
                         "categories": {
                             "data": [
@@ -276,17 +311,84 @@ The Product object.
 
 + Request (application/json)
 
-            {
-                "id": "1111111",
-                "name": "Your campaign name"
-                },
-                "date_created": "2015-09-15T14:38:16+00:00",
-                "last_changed": "2015-09-15T14:38:16+00:00",
-                "created_by": "",
-                "modified_by": ""
-            }
-            
-            
+                {
+                    "name": "",
+                    "description": "",
+                    "commodity_type": "physical",
+                    "price": [
+                        {
+                            "amount": 5891,
+                            "currency": "USD",
+                            "includes_tax": true
+                        }
+                    ].
+                    "bulk_pricing": [
+                        {
+                            "quantity_min": 10,
+                            "quantity_max": 50,
+                            "type": "price",
+                            "amount": 10,
+                            "id": 1
+                        },
+                        {
+                            "quantity_min": 51,
+                            "quantity_max": 100,
+                            "type": "price",
+                            "amount": 8,
+                            "id": 2
+                        }                            
+                    ],
+                    "variants": [
+                        {
+                            "cost_price": 12,
+                            "price": 14,
+                            "weight": 22,
+                            "width": 40,
+                            "height": 100,
+                            "depth": 4,
+                            "is_free_shipping": false,
+                            "id": 156,
+                            "product_id": 77,
+                            "option_values": [
+                                {
+                                  "option_display_name": "Color",
+                                  "label": "Color",
+                                  "id": 107,
+                                  "option_id": 124
+                                }
+                            ],
+                            "calculated_price": 49.99
+                        }
+                    ],
+                    "base_variant_id": 22
+                    },                    
+                    "relationships": {
+                        "categories": {
+                            "data": [
+                                {
+                                    "type": "category",
+                                    "id": "8550c943-85c2-4239-a8a4-bfa255a38f08"
+                                }
+                            ]
+                        },
+                        "collections": {
+                            "data": [
+                                {
+                                    "type": "collection",
+                                    "id": "ced85f3a-f1d2-47b5-ada5-bcbc43eb59eb"
+                                }
+                            ]
+                        },
+                        "main_image": {
+                            "data": {
+                                "type": "main_image",
+                                "id": "54ef64a7-8a43-4398-acf2-66aa3c038136"
+                            }
+                        }
+                    }
+                }
+    
+    
 + Response 201
 
     [Products][]
@@ -3806,18 +3908,16 @@ The cart object.
             "error": "Resource modification failed"
         }
 
-### Create a cart [POST /v1/carts?quantity={quantity}&product_id={product_id}&variant_id={variant_id}&price={price}&coupon_code={coupon_code}&amount={ampount}&quantity={quantity}&message={message}]
+### Create a cart [POST /v1/carts]
 
     + Parameters
-    
-    + cart_id: 1 (required, string) - ID of the cart in form of a string
     + item_id: 1 (required, string) - ID of the item in form of a string
     + quantity: 1 (required, string) - item quantity in form of a integer
     + product_id: 1 (required, string) - ID of the product in form of a string
     + variant_id: 1 (required, string) - ID of the variant in form of a string
-    + price: 1 (required, string) - price of the item in form of a float
+    + price: 1.00 (required, string) - price of the item in form of a float
     + coupon_code: 1 (required, string) - code in form of a string
-    + amount: 1 (required, string) - price of the item in form of a float 
+    + amount: 1.00 (required, string) - price of the item in form of a float 
     + quantity: 1 (required, string) - discount quantity in form of a integer
     + message: 1 (required, string) - coupon message in form of a string  
     
@@ -3842,7 +3942,7 @@ The cart object.
             "result": true
         }
         
-### Add item to cart [POST /v1/carts/{cart_id}/items?quantity={quantity}&product_id={product_id}&variant_id={variant_id}&price={price}&coupon_code={coupon_code}&amount={ampount}&quantity={quantity}&message={message}]
+### Add item to cart [POST /v1/carts/{cart_id}/items]
 
     + Parameters
     
@@ -3911,20 +4011,21 @@ The cart object.
             "error": "Resource creation failed"
         }
 
-### Update an item in a cart [PATCH /v1/carts/{cart_id}/items/{item_id}?quantity={quantity}&product_id={product_id}&variant_id={variant_id}&price={price}&coupon_code={coupon_code}&amount={ampount}&quantity={quantity}&message={message}]
+### Update an item in cart [PATCH /v1/carts/{cart_id}/items/{item_id}]
 
     + Parameters
-    
     + cart_id: 1 (required, string) - ID of the cart in form of a string
     + item_id: 1 (required, string) - ID of the item in form of a string
-    + quantity: 1 (required, string) - item quantity in form of a integer
-    + product_id: 1 (required, string) - ID of the product in form of a string
-    + variant_id: 1 (required, string) - ID of the variant in form of a string
-    + price: 1 (required, string) - price of the item in form of a float
-    + coupon_code: 1 (required, string) - code in form of a string
-    + amount: 1 (required, string) - price of the item in form of a float 
-    + quantity: 1 (required, string) - discount quantity in form of a integer
-    + message: 1 (required, string) - coupon message in form of a string     
+    
+    Querystring params
+    + quantity: 1 (optional, number) - item quantity in form of a integer
+    + product_id: 1 (optional, string) - ID of the product in form of a string
+    + variant_id: 1 (optional, string) - ID of the variant in form of a string
+    + price: 1 (optional, number) - price of the item in form of a float
+    + coupon_code: 1 (optional, string) - code in form of a string
+    + amount: 1 (optional, number) - price of the item in form of a float 
+    + quantity: 1 (optional, number) - discount quantity in form of a integer
+    + message: 1 (optional, string) - coupon message in form of a string     
 
 + Request (application/json)
 
@@ -4088,6 +4189,289 @@ The Order object.
         }
 
 
+
+## Group EDDM Routes
+Group of all route-related resources.
+
+## EDDM Routes [/v1/routes/{usps_route}]
+
+The EDDM Route object.
+
++ Model (application/json)
+
+    + Body
+    
+            {
+                "id": "12345678901234567",
+                "proximity": "exact",
+                "carrier_route": "55555R001",
+                "zip_code": "55555",
+                "counts": {
+                    "route_total": 655,
+                    "business_total": 5
+                    "residential_total": 650,
+                    "residential_counts": {
+                        "single_family": 630,
+                        "multi_family": 20
+                    }
+                },
+                "geocode": {
+                    "latitude": 00.000000,
+                    "longitude": 00.000000
+                },
+                "household_data": {
+                    "household_income": 83158,
+                    "household_size": 2.9
+                }
+            }
+
+### Retrieve a single EDDM route [GET /v1/routes/{usps_route}]
+
++ Parameters
+    + usps_route: 55555R001 (required, string) - USPS route number in form of a string
+
++ Request
+    + Headers
+
+            Authorization: Basic ABC123
+          
++ Response 200
+
+    [EDDM Routes][]
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+        
+## EDDM Routes Collection [/v1/routes]
+
+Get a list of all EDDM routes near a mailing address.
+
++ Model (application/json)
+
+    + Body
+
+                {
+                    "routes": [
+                        {
+                            "id": "12345678901234567",
+                            "proximity": "exact",
+                            "carrier_route": "55555R001",
+                            "zip_code": "55555",
+                            "counts": {
+                                "route_total": 655,
+                                "business_total": 5
+                                "residential_total": 650,
+                                "residential_counts": {
+                                    "single_family": 630,
+                                    "multi_family": 20
+                                }
+                            },
+                            "geocode": {
+                                "latitude": 00.000000,
+                                "longitude": 00.000000
+                            },
+                            "household_data": {
+                                "household_income": 83158,
+                                "household_size": 2.9
+                            }
+                        },
+                        {
+                            "id": "23456789012345678",
+                            "proximity": "exact",
+                            "carrier_route": "R002",
+                            "zip_code": "55555",
+                            "counts": {
+                                "route_total": 530,
+                                "business_total": 10
+                                "residential_total": 520,
+                                "residential_counts": {
+                                    "single_family": 510,
+                                    "multi_family": 10
+                                }
+                            },
+                            "geocode": {
+                                "latitude": 00.000000,
+                                "longitude": 00.000000
+                            },
+                            "household_data": {
+                                "household_income": 67032,
+                                "household_size": 3.1
+                            }
+                        }
+                    ],
+                    "paging": {
+                        "total": 2,
+                        "page": 1,
+                        "pages": 1
+                    }
+                }
+
+### Return EDDM routes [POST /v1/routes]
+
+NOTE: we removed the GET option as a way to retrieve EDDM routes. POST is the supported method, (June 9 2018)
+You must pass a mailing address utilizing request object parameters.
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic ABC123
+            
+    + Body 
+            
+                    {
+                        "address1": "1234 Main St",
+                        "city": "Miami",
+                        "state": FL,
+                        "zip": 33101,
+                        "country": "USA"
+                    }
+
++ Response 200
+
+    [EDDM Routes Collection][]
+    
+    
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+    
+
+
+## Group Postcards
+Group of all postcard-related resources.
+
+### Proof status of a postcard [POST /v1/postcards/{job_number}/proof]
+
++ Parameters
+    + job_number: 000000987654321 (required, string) - Avanzado job number in form of a string
+
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Basic ABC123
+            
+    + Body 
+
+            {
+                "proof_status": "approve|reject"
+            }
+
++ Response 200
+
+            {
+                "job_number": "000000987654321",
+                "confirmation_number": "000000987654321",
+                "expected_delivery_date": "2018-05-27T00:00:00.000Z",
+                "proof_url": "tbd",
+            }
+
+    
+    
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+        
+### Create a postcard [POST /v1/postcards/send]
+
+The expected_send_date is a timestamp in ISO 8601 format which specifies a date after 
+the current time and up to 45 days (TBD) in the future to send the postcard.
+
+The merge_variables object can gave up to 40 key-value pairs. 
+Keys must be at most 40 characters and values must be at most 500 characters.
+Neither can contain the characters " and \. Nested objects are not supported.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Basic ABC123
+            
+    + Body 
+    
+                {
+                    "template_id": "0000-1234-5678-9012",
+                    "description": "optional mailing name"
+                    "proof": {
+                        "required": true,
+                        "proof_email": "you@email.com"           
+                    },
+                    "to": {
+                        "eddm": [
+                            { "carrier_route": "55555R001" },
+                            { "carrier_route": "55555R002" }
+                        ],
+                        "list": "{http://url}",
+                        "recipients": [
+                            {
+                                "name": "Joe Smiley",
+                                "company": null,
+                                "address_line1": "567 Maple Dr",
+                                "address_line2": "Ste 3",
+                                "address_city": "Austin",
+                                "address_state": "TX",
+                                "address_zip": "78746-1741",
+                                "address_country": "US"
+                            }
+                        ]
+                    },                    
+                    "from": {
+                        "name": "Mary Smith",
+                        "company": "The Heyl Group at Keller Williams"|null,
+                        "address_line1": "1801 S. Mo-Pac Expressway",
+                        "address_line2": "",
+                        "address_city": "Austin",
+                        "address_state": "TX",
+                        "address_zip": "78746-1741",
+                        "address_country": "US"
+                    },                    
+                    "expected_send_date": "2018-09-12 | 2018-09-12T00:00:00.967Z",
+                    "mail_type": "first_class | standard",
+                    "merge_variables": [
+                        { 
+                            "name": "agent_name",
+                            "value": "Mary Smith"
+                        },
+                        { 
+                            "name": "agent_office_name",
+                            "value": "The Heyl Group at Keller Williams"
+                        },
+                        { 
+                            "name": "agent_office_address",
+                            "value": "1801 S. Mo-Pac Expressway, Ste 100, Austin, TX 78746"
+                        },
+                        {
+                            "name": "agent_photo",
+                            "value": "{http://url}"
+                        }
+                    },
+                    "date_created": "2018-09-05T12:34:00.967Z",
+                    "date_modified": "2018-09-05T12:34:00.967Z"
+                }
+
+
++ Response 200
+
+            {
+                "job_number": "000000987654321"
+            }
+
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+        
+
+        
 # Group Accounts
 Group of all account-related resources.
 
