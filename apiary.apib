@@ -162,6 +162,53 @@ The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-htt
 # Group Products
 Group of all product-related resources.
 
+price
+This variant's base price on the storefront. If a Price List ID is used, the Price List value will be used. If a Price List ID is not used, and this value is null, the product's default price (set in the Product resource's price field) will be used as the base price.
+
+sale_price
+This variant's sale price on the storefront. If a Price List ID is used, the Price List value will be used. If a Price List ID is not used, and this value is null, the product's sale price (set in the Product resource's price field) will be used as the sale price.
+
+retail_price
+This variant's retail price on the storefront. If a Price List ID is used, the Price List value will be used. If a Price List ID is not used, and this value is null, the product's retail price (set in the Product resource's price field) will be used as the retail price.
+
+weight
+This variant's base weight on the storefront. If this value is null, the product's default weight (set in the Product resource's weight field) will be used as the base weight.
+
+width
+Width of the variant, which can be used when calculating shipping costs. If this value is null, the product's default width (set in the Product resource's width field) will be used as the base width.
+
+height
+Height of the variant, which can be used when calculating shipping costs. If this value is null, the product's default height (set in the Product resource's height field) will be used as the base height.
+
+is_free_shipping
+Flag used to indicate whether the variant has free shipping. If true, the shipping cost for the variant will be zero.
+
+fixed_cost_shipping_price
+A fixed shipping cost for the variant. If defined, this value will be used during checkout instead of normal shipping-cost calculation.
+
+purchasing_disabled
+If true, this variant will not be purchasable on the storefront.
+
+purchasing_disabled_message
+If purchasing_disabled is true, this message should show on the storefront when the variant is selected.
+
+image_url
+The image that will be displayed when this variant is selected on the storefront. When updating a SKU image, send the publicly accessible URL. Supported image formats are JPEG, PNG, and GIF. Generic product images not specific to the variant should be stored on the product.
+
+option_values (array)
+    Example array:
+        "option_values": [
+            {
+              "option_display_name": "Color",
+              "label": "Color",
+              "id": 107,
+              "option_id": 124
+            }
+        ]
+
+calculated_price
+The price of the variant as seen on the storefront. This price takes into account sale_price and any price adjustment rules that are applicable to this variant.
+
 ## Products [/v1/products/{product_id}]
 
 The Product object.
@@ -174,10 +221,10 @@ The Product object.
                     "id": "1111111",
                     "name": "",
                     "description": "",
-                    "commodity_type": "physical",
+                    "commodity_type": "physical|digital|download",
                     "price": [
                         {
-                            "amount": 5891,
+                            "amount": 12,
                             "currency": "USD",
                             "includes_tax": true
                         }
@@ -317,9 +364,9 @@ The Product object.
                     "commodity_type": "physical",
                     "price": [
                         {
-                            "amount": 5891,
+                            "amount": 12,
                             "currency": "USD",
-                            "includes_tax": true
+                            "includes_tax": false
                         }
                     ].
                     "bulk_pricing": [
@@ -348,7 +395,6 @@ The Product object.
                             "depth": 4,
                             "is_free_shipping": false,
                             "id": 156,
-                            "product_id": 77,
                             "option_values": [
                                 {
                                   "option_display_name": "Color",
@@ -432,8 +478,386 @@ Get a list of all products.
 + Response 200
 
     [Products Collection][]
+
+
+
+# Group Variants
+Group of all (product) variant-related resources.
+
+## Variants [/v1/variants/{variant_id}]
+
+The variant object.
+
++ Model (application/json)
+
+    + Body
+                    
+                {
+                    "cost_price": 12,
+                    "price": 14,
+                    "weight": 22,
+                    "width": 40,
+                    "height": 100,
+                    "is_free_shipping": false,
+                    "purchasing_disabled": false,
+                    "inventory_level": 50,
+                    "inventory_warning_level": 10,
+                    "id": 156,
+                    "product_id": 77,
+                    "option_values": [
+                        {
+                            "option_display_name": "Color",
+                            "label": "Color",
+                            "id": 107,
+                            "option_id": 124
+                        }
+                    ],
+                    "calculated_price": 49.99
+                    "date_created": "2015-09-15T14:38:16+00:00",
+                    "last_changed": "2015-09-15T14:38:16+00:00",
+                    "created_by": "",
+                    "modified_by": ""
+                }
+
+### Retrieve a single variant [GET /v1/variants/{variant_id}]
+
++ Parameters
+    + variant_id: 1 (required, string) - ID of the variant in form of a string
+    
++ Response 200
+
+    [Variants][]
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+
+### Edit a variant [PATCH /v1/variants/{variant_id}]
+
++ Parameters
+    + variant_id: 1 (required, string) - ID of the variant in form of a string
+    
++ Request (application/json)
+
+            {
+                "name": "new name"
+            }
+
+
++ Response 200
+
+    [Products][]
+
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found"
+        }
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Delete a variant [DELETE /v1/variants/{variant_id}]
+
++ Parameters
+    + variant_id: 1 (required, string) - ID of the variant in form of a string
+    
++ Response 200
+
+        { 
+            "result": true
+        }
+
+### Create a variant [POST /v1/variants]
+
++ Request (application/json)
+
+                {
+                    "cost_price": 12,
+                    "price": 14,
+                    "weight": 22,
+                    "width": 40,
+                    "height": 100,
+                    "is_free_shipping": false,
+                    "purchasing_disabled": false,
+                    "inventory_level": 50,
+                    "inventory_warning_level": 10,
+                    "id": 156,
+                    "product_id": 77,
+                    "option_values": [
+                        {
+                            "option_display_name": "Color",
+                            "label": "Color",
+                            "id": 107,
+                            "option_id": 124
+                        }
+                    ],
+                    "calculated_price": 49.99
+                    "date_created": "2015-09-15T14:38:16+00:00",
+                    "last_changed": "2015-09-15T14:38:16+00:00",
+                    "created_by": "",
+                    "modified_by": ""
+                }
+                
+    
++ Response 201
+
+    [Variants][]
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+
+
+# Group Pricelists
+Group of all pricelist-related resources.
+
+## Pricelists [/v1/pricelists/{pricelist_id}]
+
+The pricelists object.
+
++ Model (application/json)
+
+    + Body
+        
+                {
+                    "id": "1111111",
+                    "name": "",
+                    "description": "",
+                    "commodity_type": "physical|digital|download",
+                    "price": [
+                        {
+                            "amount": 12,
+                            "currency": "USD",
+                            "includes_tax": true
+                        }
+                    ].
+                    "bulk_pricing": [
+                        {
+                            "quantity_min": 10,
+                            "quantity_max": 50,
+                            "type": "price",
+                            "amount": 10,
+                            "id": 1
+                        },
+                        {
+                            "quantity_min": 51,
+                            "quantity_max": 100,
+                            "type": "price",
+                            "amount": 8,
+                            "id": 2
+                        }                            
+                    ],
+                    "variants": [
+                        {
+                            "cost_price": 12,
+                            "price": 14,
+                            "weight": 22,
+                            "width": 40,
+                            "height": 100,
+                            "depth": 4,
+                            "is_free_shipping": false,
+                            "id": 156,
+                            "product_id": 77,
+                            "option_values": [
+                                {
+                                  "option_display_name": "Color",
+                                  "label": "Color",
+                                  "id": 107,
+                                  "option_id": 124
+                                }
+                            ],
+                            "calculated_price": 49.99
+                        }
+                    ],
+                    "base_variant_id": 22
+                    },                    
+                    "relationships": {
+                        "categories": {
+                            "data": [
+                                {
+                                    "type": "category",
+                                    "id": "8550c943-85c2-4239-a8a4-bfa255a38f08"
+                                }
+                            ]
+                        },
+                        "collections": {
+                            "data": [
+                                {
+                                    "type": "collection",
+                                    "id": "ced85f3a-f1d2-47b5-ada5-bcbc43eb59eb"
+                                }
+                            ]
+                        },
+                        "main_image": {
+                            "data": {
+                                "type": "main_image",
+                                "id": "54ef64a7-8a43-4398-acf2-66aa3c038136"
+                            }
+                        }
+                    },
+                    "date_created": "2015-09-15T14:38:16+00:00",
+                    "last_changed": "2015-09-15T14:38:16+00:00",
+                    "created_by": "",
+                    "modified_by": ""
+                }
+
+### Retrieve a single pricelist [GET /v1/pricelists/{pricelist_id}]
+
++ Parameters
+    + pricelist_id: 1 (required, string) - ID of the pricelist in form of a string
+    
++ Response 200
+
+    [Pricelists][]
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+
+### Edit a pricelist [PATCH /v1/pricelists/{pricelist_id}]
+
++ Parameters
+    + pricelist_id: 1 (required, string) - ID of the pricelist in form of a string
+    
++ Request (application/json)
+
+            {
+                "name": "new name"
+            }
+
+
++ Response 200
+
+    [Products][]
+
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found"
+        }
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Delete a pricelist [DELETE /v1/pricelists/{pricelist_id}]
+
++ Parameters
+    + pricelist_id: 1 (required, string) - ID of the pricelist in form of a string
+    
++ Response 200
+
+        { 
+            "result": true
+        }
+
+### Create a pricelist [POST /v1/pricelists]
+
++ Request (application/json)
+
+                {
+                    "name": "",
+                    "description": "",
+                    "commodity_type": "physical",
+                    "price": [
+                        {
+                            "amount": 12,
+                            "currency": "USD",
+                            "includes_tax": false
+                        }
+                    ].
+                    "bulk_pricing": [
+                        {
+                            "quantity_min": 10,
+                            "quantity_max": 50,
+                            "type": "price",
+                            "amount": 10,
+                            "id": 1
+                        },
+                        {
+                            "quantity_min": 51,
+                            "quantity_max": 100,
+                            "type": "price",
+                            "amount": 8,
+                            "id": 2
+                        }                            
+                    ],
+                    "variants": [
+                        {
+                            "cost_price": 12,
+                            "price": 14,
+                            "weight": 22,
+                            "width": 40,
+                            "height": 100,
+                            "depth": 4,
+                            "is_free_shipping": false,
+                            "id": 156,
+                            "option_values": [
+                                {
+                                  "option_display_name": "Color",
+                                  "label": "Color",
+                                  "id": 107,
+                                  "option_id": 124
+                                }
+                            ],
+                            "calculated_price": 49.99
+                        }
+                    ],
+                    "base_variant_id": 22
+                    },                    
+                    "relationships": {
+                        "categories": {
+                            "data": [
+                                {
+                                    "type": "category",
+                                    "id": "8550c943-85c2-4239-a8a4-bfa255a38f08"
+                                }
+                            ]
+                        },
+                        "collections": {
+                            "data": [
+                                {
+                                    "type": "collection",
+                                    "id": "ced85f3a-f1d2-47b5-ada5-bcbc43eb59eb"
+                                }
+                            ]
+                        },
+                        "main_image": {
+                            "data": {
+                                "type": "main_image",
+                                "id": "54ef64a7-8a43-4398-acf2-66aa3c038136"
+                            }
+                        }
+                    }
+                }
     
     
++ Response 201
+
+    [Products][]
+
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+
 
 # Group Campaigns
 Group of all campaign-related resources.
@@ -678,7 +1102,6 @@ The Campaign object.
             "error": "Resource failed"
         }
 
-
 # Campaigns Collection [/v1/campaigns{?q}]
 
 Get a list of all campaigns.
@@ -885,7 +1308,6 @@ The List object.
         { 
             "error": "Resource modification failed"
         }
-        
 
 # Lists Collection [/v1/lists{?q}]
 
@@ -1395,7 +1817,6 @@ For use by public users uploading a fixed file format and not using the custom f
         { 
             "error": "Resource modification failed"
         }
-
 
 # Members Collection [/v1/lists/{list_id}/members{?q}]
 
@@ -3106,9 +3527,7 @@ Get a list of all templates.
                 }
             }
   
-  
-
-# TemplateFolders Collection [/v1/templates/folders]
+# Template Folders Collection [/v1/templates/folders]
 
 Get a list of all template folders.
 
@@ -3230,7 +3649,7 @@ Get a list of all template folders.
 
 + Response 200
 
-    [TemplateFolders Collection][]
+    [Template Folders Collection][]
     
    
 
@@ -3416,8 +3835,6 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
         { 
             "result": true
         }
-
-
 
 # Assets Collection [/v1/assets/types/{asset_type}{?q}]
 
@@ -3827,6 +4244,7 @@ Get a list of all assets.
             }
 
 
+
 # Group Shopping Cart [/v1/carts/]
 Group of all shopping cart-related resources.
 
@@ -4065,13 +4483,14 @@ The cart object.
         }
 
 
+
 # Group Orders [/v1/orders/]
 Group of all order-related resources.
 
 The Order API is intended to be accessed from the order confirmation page immediately after a successful checkout. 
 It allows you to access most of the details of an order that was just placed.
 
-### Order [/v1/order/{order_id}]
+### Order [/v1/orders/{order_number}]
 
 The Order object.
 
@@ -4172,10 +4591,10 @@ The Order object.
                 }
             }
 
-### Get an order [GET /v1/orders/{order_id}]
+### Get an order [GET /v1/orders/{order_number}]
 
     + Parameters
-        + order_id: 1 (required, string) - ID of the order in form of a string
+        + order_number: 1 (required, string) -  the order number in form of a string
     
 + Response 200
 
@@ -4188,12 +4607,246 @@ The Order object.
             "error": "Resource modification failed"
         }
 
+### Create an order for a postcard mailing [POST /v1/orders/postcards/]
+
+The expected_send_date is a timestamp in ISO 8601 format which specifies a date after 
+the current time and up to 45 days (TBD) in the future to send the postcard.
+
+The merge_variables object can gave up to 40 key-value pairs. 
+Keys must be at most 40 characters and values must be at most 500 characters.
+Neither can contain the characters " and \. Nested objects are not supported.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Basic ABC123
+            
+    + Body 
+    
+                {
+                    "order": {
+                      "currency": {
+                        "name": "US Dollars",
+                        "code": "USD",
+                        "symbol": "$",
+                        "decimal_places": 2
+                      },
+                      "coupons": [
+                        {
+                          "id": "1",
+                          "code": "abcde1",
+                          "display_name": "$5.00 off the order total",
+                          "coupon_type": "per_total_discount",
+                          "discounted_amount": 5
+                        }
+                      ],
+                      "discounts": [
+                        {
+                          "name": "Free Shipping",
+                          "discounted_amount": 7
+                        }
+                      ],
+                      "line_items": [
+                        {
+                          "physical_items": [
+                            {
+                              "id": "8235d47d-718b-4b9c-89a4-5fa1ee76a0b4",
+                              "variant_id": 182,
+                              "product_id": 118,
+                              "name": "BigCommerce Hoodies",
+                              "url": "http://your-store.mybigcommerce.com/hoodies/",
+                              "quantity": 2,
+                              "is_taxable": true,
+                              "image_url": "https://cdn8.bigcommerce.com/some-string/themes/ClassicNext/images/ProductDefault.gif",
+                              "discounts": [
+                                {
+                                  "name": "Free Shipping",
+                                  "discountedAmount": 7
+                                }
+                              ],
+                              "discount_amount": 0,
+                              "coupon_amount": 0,
+                              "list_price": 100,
+                              "sale_price": 100,
+                              "extended_list_price": 100,
+                              "extended_sale_price": 100,
+                              "type": "physical",
+                              "is_shipping_required": true
+                            }
+                          ],
+                          "digital_items": [
+                            {
+                              "quantity": 0,
+                              "discounts": [
+                                {
+                                  "name": "Free Shipping",
+                                  "discounted_amount": 7
+                                }
+                              ],
+                              "download_file_urls": []
+                            }
+                          ],
+                          "gift_certificate": [
+                            {
+                              "type": "giftCertificate"
+                            }
+                          ]
+                        }
+                      ],
+                      "billingAddress": {
+                        "country": "USA",
+                        "email": "janedoe@email.com",
+                        "firstName": "Jane",
+                        "lastName": "Doe",
+                        "company": "BigCommerce",
+                        "street1": "123 Main Street",
+                        "street2": "Apt 1",
+                        "city": "Austin",
+                        "countryCode": "USA",
+                        "postalCode": "12345",
+                        "customFields": [
+                          {}
+                        ]
+                      },
+                      "status": "INCOMPLETE"
+                    }
+                }
 
 
-## Group EDDM Routes
-Group of all route-related resources.
++ Response 200
 
-## EDDM Routes [/v1/routes/{usps_route}]
+            {
+                "job_number": "000000987654321"
+            }
+
+
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+        
+
+
+# Group OrderItems [/v1/orders/{order_number}/items/]
+Group of all order item-related resources.
+
+### OrderItem [/v1/orders/{order_number}/items/{item_id}]
+
+The OrderItem object.
+
+    + Parameters
+        + order_number: 1 (required, string) - ID of the order in form of a string
+        + item_id: 1 (required, string) - ID of the order item in form of a string
+        
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "line_items": 
+                    {
+                      "physical_items": [
+                        {
+                          "id": "8235d47d-718b-4b9c-89a4-5fa1ee76a0b4",
+                          "variant_id": 182,
+                          "product_id": 118,
+                          "name": "BigCommerce Hoodies",
+                          "url": "http://your-store.mybigcommerce.com/hoodies/",
+                          "quantity": 2,
+                          "is_taxable": true,
+                          "image_url": "https://cdn8.bigcommerce.com/some-string/themes/ClassicNext/images/ProductDefault.gif",
+                          "discounts": [
+                            {
+                              "name": "Free Shipping",
+                              "discountedAmount": 7
+                            }
+                          ],
+                          "discount_amount": 0,
+                          "coupon_amount": 0,
+                          "list_price": 100,
+                          "sale_price": 100,
+                          "extended_list_price": 100,
+                          "extended_sale_price": 100,
+                          "type": "physical",
+                          "is_shipping_required": true
+                        }
+                      ],
+                      "digital_items": [
+                        {
+                          "quantity": 0,
+                          "discounts": [
+                            {
+                              "name": "Free Shipping",
+                              "discounted_amount": 7
+                            }
+                          ],
+                          "download_file_urls": []
+                        }
+                      ],
+                      "gift_certificate": [
+                        {
+                          "type": "giftCertificate"
+                        }
+                      ]
+                    }
+                }
+            }
+
+### Get an order line item [GET /v1/orders/{order_number}/items/{item_id}]
+
+    + Parameters
+        + order_number: 1 (required, string) -  the order number in form of a string
+        + item_id: 00000012345678 (required, string) - order item id in form of a string
+    
++ Response 200
+
+    [OrderItem][]
+
+        
++ Response 400 (application/json)
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Update proof status of an order item [PATCH /v1/postcards/{order_number}/items/{item_id}]
+
++ Parameters
+    + order_number: 000000987654321 (required, string) - order number in form of a string
+    + item_id: 00000012345678 (required, string) - order item id in form of a string
+
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Basic ABC123
+            
+    + Body 
+
+            {
+                "status": "approve|reject"
+            }
+
++ Response 200
+
+        [][]
+
+    
+    
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+
+
+
+## Group Routes
+Group of all EDDM carrier route-related resources.
+
+## Routes [/v1/routes/{carrier_route}]
 
 The EDDM Route object.
 
@@ -4201,34 +4854,161 @@ The EDDM Route object.
 
     + Body
     
-            {
-                "id": "12345678901234567",
-                "proximity": "exact",
-                "carrier_route": "55555R001",
-                "zip_code": "55555",
-                "counts": {
-                    "route_total": 655,
-                    "business_total": 5
-                    "residential_total": 650,
-                    "residential_counts": {
-                        "single_family": 630,
-                        "multi_family": 20
+                {
+                    "usps_route": "48335C037",
+                    "zip_code": "48335",
+                    "carrier_route": "C037",
+                    "counts": {
+                        "route_total": 737,
+                        "business_total": 75,
+                        "residential_total": 662,
+                        "residential_counts": {
+                            "single_family": 662,
+                            "multi_family": 0
+                        }
+                    },
+                    "geocode": {
+                        "latitude": 42.4725,
+                        "longitude": -83.411411
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [
+                                        -83.40714,
+                                        42.472035
+                                    ],
+                                    [
+                                        -83.40707,
+                                        42.471693
+                                    ],
+                                    [
+                                        -83.407054,
+                                        42.471408
+                                    ],
+                                    [
+                                        -83.407028,
+                                        42.471025
+                                    ],
+                                    [
+                                        -83.406819,
+                                        42.470921
+                                    ],
+                                    [
+                                        -83.406595,
+                                        42.470879
+                                    ],
+                                    [
+                                        -83.406636,
+                                        42.470782
+                                    ],
+                                    [
+                                        -83.406591,
+                                        42.469939
+                                    ],
+                                    [
+                                        -83.408172,
+                                        42.469878
+                                    ],
+                                    [
+                                        -83.410078,
+                                        42.469845
+                                    ],
+                                    [
+                                        -83.410364,
+                                        42.468925
+                                    ],
+                                    [
+                                        -83.411528,
+                                        42.468915
+                                    ],
+                                    [
+                                        -83.415243,
+                                        42.46883
+                                    ],
+                                    [
+                                        -83.415444,
+                                        42.468976
+                                    ],
+                                    [
+                                        -83.415658,
+                                        42.473298
+                                    ],
+                                    [
+                                        -83.415733,
+                                        42.474614
+                                    ],
+                                    [
+                                        -83.415762,
+                                        42.475592
+                                    ],
+                                    [
+                                        -83.415578,
+                                        42.47581
+                                    ],
+                                    [
+                                        -83.409521,
+                                        42.475968
+                                    ],
+                                    [
+                                        -83.407709,
+                                        42.475963
+                                    ],
+                                    [
+                                        -83.407507,
+                                        42.474464
+                                    ],
+                                    [
+                                        -83.407162,
+                                        42.47447
+                                    ],
+                                    [
+                                        -83.406336,
+                                        42.474492
+                                    ],
+                                    [
+                                        -83.406313,
+                                        42.473972
+                                    ],
+                                    [
+                                        -83.406281,
+                                        42.47353
+                                    ],
+                                    [
+                                        -83.406381,
+                                        42.473362
+                                    ],
+                                    [
+                                        -83.406766,
+                                        42.473198
+                                    ],
+                                    [
+                                        -83.407266,
+                                        42.472965
+                                    ],
+                                    [
+                                        -83.40714,
+                                        42.472035
+                                    ]
+                                ]
+                            ]
+                        ]
+                    },
+                    "proximity": {
+                    
+                    },
+                    "household_data": {
+                        "household_income": "81246",
+                        "household_size": "2.8"
                     }
-                },
-                "geocode": {
-                    "latitude": 00.000000,
-                    "longitude": 00.000000
-                },
-                "household_data": {
-                    "household_income": 83158,
-                    "household_size": 2.9
                 }
-            }
 
-### Retrieve a single EDDM route [GET /v1/routes/{usps_route}]
+### Retrieve a single carrier route [GET /v1/routes/{carrier_route}]
 
 + Parameters
-    + usps_route: 55555R001 (required, string) - USPS route number in form of a string
+    + carrier_route: 55555R001 (required, string) - USPS route number in form of a string
 
 + Request
     + Headers
@@ -4237,7 +5017,7 @@ The EDDM Route object.
           
 + Response 200
 
-    [EDDM Routes][]
+    [Routes][]
 
 + Response 404 (application/json)
 
@@ -4245,7 +5025,7 @@ The EDDM Route object.
             "error": "Resource not found" 
         }
         
-## EDDM Routes Collection [/v1/routes]
+## Routes Collection [/v1/routes]
 
 Get a list of all EDDM routes near a mailing address.
 
@@ -4309,30 +5089,26 @@ Get a list of all EDDM routes near a mailing address.
                     }
                 }
 
-### Return EDDM routes [POST /v1/routes]
-
-NOTE: we removed the GET option as a way to retrieve EDDM routes. POST is the supported method, (June 9 2018)
-You must pass a mailing address utilizing request object parameters.
+### Retrieve carrier routes using an address [GET /v1/routes?address1={address1}&address2={address2}&city={city}&state={state}&zip={zip}&country={country}]
 
 + Request (application/json)
 
     + Headers
     
             Authorization: Basic ABC123
-            
-    + Body 
-            
-                    {
-                        "address1": "1234 Main St",
-                        "city": "Miami",
-                        "state": FL,
-                        "zip": 33101,
-                        "country": "USA"
-                    }
+
+    + Parameters
+    
+        + address1 (string, required) - The household address 1.
+        + address2 (string, required) - The household address 2.
+        + city (string, required) - The household city
+        + state (string, required) - The household state
+        + zip (string, required) - The household zip
+        + country (string, required) - The household address country. Default: US
 
 + Response 200
 
-    [EDDM Routes Collection][]
+    [Routes Collection][]
     
     
 + Response 404 (application/json)
@@ -4340,13 +5116,14 @@ You must pass a mailing address utilizing request object parameters.
         { 
             "error": "Resource not found" 
         }
+
     
 
 
 ## Group Postcards
 Group of all postcard-related resources.
 
-### Proof status of a postcard [POST /v1/postcards/{job_number}/proof]
+### Assign proof status of a postcard [POST /v1/postcards/{job_number}/proof]
 
 + Parameters
     + job_number: 000000987654321 (required, string) - Avanzado job number in form of a string
@@ -5025,8 +5802,6 @@ The User object. Roles include admin/manager/author/viewer.
         { 
             "error": "Resource modification failed"
         }
-
-
 
 # Users Collection [/v1/accounts/{account_id}/users{?q}]
 
