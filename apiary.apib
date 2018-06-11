@@ -299,7 +299,7 @@ The Product object.
                     "modified_by": ""
                 }
 
-### Retrieve a single product [GET /v1/products/{product_id}]
+### Retrieve a single product (Phase 1) Role:Author  [GET /v1/products/{product_id}]
 
 + Parameters
     + product_id: 1 (required, string) - ID of the product in form of a string
@@ -314,7 +314,7 @@ The Product object.
             "error": "Resource not found" 
         }
 
-### Edit a product [PATCH /v1/products/{product_id}]
+### Edit a product (Phase 2) Role:Manager [PATCH /v1/products/{product_id}]
 
 + Parameters
     + product_id: 1 (required, string) - ID of the product in form of a string
@@ -343,7 +343,7 @@ The Product object.
             "error": "Resource modification failed"
         }
 
-### Delete a product [DELETE /v1/products/{product_id}]
+### Delete a product (Phase 2) Role:Manager [DELETE /v1/products/{product_id}]
 
 + Parameters
     + product_id: 1 (required, string) - ID of the product in form of a string
@@ -354,7 +354,7 @@ The Product object.
             "result": true
         }
 
-### Create a product [POST /v1/products]
+### Create a product (Phase 2) Role:Manager [POST /v1/products]
 
 + Request (application/json)
 
@@ -467,7 +467,7 @@ Get a list of all products.
                         }
                     }
 
-### List all products [GET /v1/products{?q}]
+### List all products (Phase 1) Role:Author [GET /v1/products{?q}]
 
 + Parameters
 
@@ -518,7 +518,7 @@ The variant object.
                     "modified_by": ""
                 }
 
-### Retrieve a single variant [GET /v1/variants/{variant_id}]
+### Retrieve a single variant (Phase 2) Role:Author [GET /v1/variants/{variant_id}]
 
 + Parameters
     + variant_id: 1 (required, string) - ID of the variant in form of a string
@@ -533,7 +533,7 @@ The variant object.
             "error": "Resource not found" 
         }
 
-### Edit a variant [PATCH /v1/variants/{variant_id}]
+### Edit a variant (Phase 2) Role:Manager [PATCH /v1/variants/{variant_id}]
 
 + Parameters
     + variant_id: 1 (required, string) - ID of the variant in form of a string
@@ -562,7 +562,7 @@ The variant object.
             "error": "Resource modification failed"
         }
 
-### Delete a variant [DELETE /v1/variants/{variant_id}]
+### Delete a variant (Phase 2) Role:Manager [DELETE /v1/variants/{variant_id}]
 
 + Parameters
     + variant_id: 1 (required, string) - ID of the variant in form of a string
@@ -573,7 +573,7 @@ The variant object.
             "result": true
         }
 
-### Create a variant [POST /v1/variants]
+### Create a variant (Phase 2) Role:Manager [POST /v1/variants]
 
 + Request (application/json)
 
@@ -710,7 +710,7 @@ The pricelists object.
                     "modified_by": ""
                 }
 
-### Retrieve a single pricelist [GET /v1/pricelists/{pricelist_id}]
+### Retrieve a single pricelist (Phase 2) Role:Author [GET /v1/pricelists/{pricelist_id}]
 
 + Parameters
     + pricelist_id: 1 (required, string) - ID of the pricelist in form of a string
@@ -725,7 +725,7 @@ The pricelists object.
             "error": "Resource not found" 
         }
 
-### Edit a pricelist [PATCH /v1/pricelists/{pricelist_id}]
+### Edit a pricelist (Phase 2) Role:Admin [PATCH /v1/pricelists/{pricelist_id}]
 
 + Parameters
     + pricelist_id: 1 (required, string) - ID of the pricelist in form of a string
@@ -754,7 +754,7 @@ The pricelists object.
             "error": "Resource modification failed"
         }
 
-### Delete a pricelist [DELETE /v1/pricelists/{pricelist_id}]
+### Delete a pricelist (Phase 2) Role:Admin [DELETE /v1/pricelists/{pricelist_id}]
 
 + Parameters
     + pricelist_id: 1 (required, string) - ID of the pricelist in form of a string
@@ -765,7 +765,7 @@ The pricelists object.
             "result": true
         }
 
-### Create a pricelist [POST /v1/pricelists]
+### Create a pricelist (Phase 2) Role:Admin [POST /v1/pricelists]
 
 + Request (application/json)
 
@@ -913,7 +913,7 @@ The Campaign object.
                     "modified_by": ""
                 }
 
-### Retrieve a single campaign [GET /v1/campaigns/{campaign_id}]
+### Retrieve a single campaign (Phase 1) Role:Author [GET /v1/campaigns/{campaign_id}]
 
 + Parameters
     + campaign_id: 1 (required, string) - ID of the Campaign in form of a string
@@ -928,7 +928,7 @@ The Campaign object.
             "error": "Resource not found" 
         }
 
-### Edit a campaign [PATCH /v1/campaigns/{campaign_id}]
+### Edit a campaign (Phase 1) Role:Author [PATCH /v1/campaigns/{campaign_id}]
 
 + Parameters
     + campaign_id: 1 (required, string) - ID of the Campaign in form of a string
@@ -961,7 +961,7 @@ The Campaign object.
             "error": "Resource modification failed"
         }
 
-### Delete a campaign [DELETE /v1/campaigns/{campaign_id}]
+### Delete a campaign (Phase 1) Role:Author [DELETE /v1/campaigns/{campaign_id}]
 
 + Parameters
     + campaign_id: 1 (required, string) - ID of the Campaign in form of a string
@@ -972,7 +972,7 @@ The Campaign object.
             "result": true
         }
 
-### Create a campaign [POST /v1/campaigns]
+### Create a campaign (Phase 1) Role:Author [POST /v1/campaigns]
 
 + Request (application/json)
 
@@ -1031,7 +1031,7 @@ The Campaign object.
             "error": "Resource modification failed"
         }
 
-### Schedule a campaign [POST /v1/campaigns/{campaign_id}/actions/schedule]
+### Schedule a campaign (Phase 1) Role:Manager [POST /v1/campaigns/{campaign_id}/actions/schedule]
 
 + Parameters
     + campaign_id: 1 (required, string) - ID of the Campaign in form of a string
@@ -1057,7 +1057,7 @@ The Campaign object.
             "error": "Resource modification failed"
         }
 
-### Unschedule a campaign [POST /v1/campaigns/{campaign_id}/actions/unschedule]
+### Unschedule a campaign (Phase 1) Role:Manager [POST /v1/campaigns/{campaign_id}/actions/unschedule]
 
 + Parameters
     + campaign_id: 1 (required, string) - ID of the Campaign in form of a string
@@ -1078,10 +1078,10 @@ The Campaign object.
 
         { 
             "error": "Resource modification failed"
-        }        
+        }
         
-        
-### Replicate a campaign [POST /campaign/{campaign_id}/actions/replicate]
+
+### Replicate a campaign (Phase 2) Role:Author [POST /campaign/{campaign_id}/actions/replicate]
 
 + Request (application/json)
 
@@ -1194,7 +1194,7 @@ Get a list of all campaigns.
                         }
                     }
 
-### List all campaigns [GET /v1/campaigns{?q}]
+### List all campaigns (Phase 1) Role:Author [GET /v1/campaigns{?q}]
 
 + Parameters
 
@@ -1232,7 +1232,7 @@ The List object.
                 "modified_by": ""
             }
 
-### Retrieve a single list [GET /v1/lists/{list_id}]
+### Retrieve a single list (Phase 1) Role:Author [GET /v1/lists/{list_id}]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1247,7 +1247,7 @@ The List object.
             "error": "Resource not found" 
         }
 
-### Edit a list [PATCH /v1/lists/{list_id}]
+### Edit a list (Phase 1) Role:Manager [PATCH /v1/lists/{list_id}]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1276,7 +1276,7 @@ The List object.
             "error": "Resource modification failed"
         }
 
-### Delete a list [DELETE /v1/lists/{list_id}]
+### Delete a list (Phase 1) Role:Manager [DELETE /v1/lists/{list_id}]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1287,7 +1287,7 @@ The List object.
             "result": true
         }
 
-### Create a list [POST /v1/lists]
+### Create a list (Phase 1) Role:Manager [POST /v1/lists]
 
 + Request (application/json)
 
@@ -1386,7 +1386,7 @@ Get a list of all lists.
                 }
             }
 
-### List all lists [GET /v1/lists{?q}]
+### List all lists (Phase 1) Role:Author [GET /v1/lists{?q}]
 
 + Parameters
 
@@ -1438,7 +1438,7 @@ The Member object.
                         "modified_by": ""
                     }
 
-### Retrieve a single list member [GET /v1/lists/{list_id}/members/{member_id}]
+### Retrieve a single list member (Phase 1) Role:Author [GET /v1/lists/{list_id}/members/{member_id}]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1454,7 +1454,7 @@ The Member object.
             "error": "Resource not found" 
         }
 
-### Add a member to list [POST /v1/lists/{list_id}/members/]
+### Add a member to list (Phase 1) Role:Manager [POST /v1/lists/{list_id}/members/]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1493,7 +1493,7 @@ The Member object.
             "error": "Resource modification failed"
         }
 
-### Edit a member [PATCH /v1/lists/{list_id}/members/{member_id}]
+### Edit a member (Phase 1) Role:Manager [PATCH /v1/lists/{list_id}/members/{member_id}]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1523,7 +1523,7 @@ The Member object.
             "error": "Resource modification failed"
         }
 
-### Delete a member [DELETE /v1/lists/{list_id}/members/{member_id}]
+### Delete a member (Phase 1) Role:Manager [DELETE /v1/lists/{list_id}/members/{member_id}]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1535,7 +1535,7 @@ The Member object.
             "result": true
         }
 
-### Get member activity [GET /v1/lists/{list_id}/members/{member_id}/activity]
+### Get member activity (Phase 1) Role:Author [GET /v1/lists/{list_id}/members/{member_id}/activity]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1588,7 +1588,7 @@ The Member object.
             "error": "Resource modification failed"
         }
 
-### Import members to a list [POST /v1/lists/{list_id}/members/import]
+### Import members to a list (Phase 1) Role:Manager [POST /v1/lists/{list_id}/members/import]
 
 For use by public users uploading a fixed file format and not using the custom file mapping feature.
 
@@ -1660,7 +1660,7 @@ For use by public users uploading a fixed file format and not using the custom f
             "error": "Resource modification failed"
         }
 
-### Import members step one [POST /v1/lists/{list_id}/members/import/stepone]
+### Import members step one (Phase 1) Role:Manager [POST /v1/lists/{list_id}/members/import/stepone]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1730,7 +1730,7 @@ For use by public users uploading a fixed file format and not using the custom f
             "error": "Resource modification failed"
         }
 
-### Import map members [POST /v1/lists/{list_id}/members/import/steptwo]
+### Import map members (Phase 1) Role:Manager [POST /v1/lists/{list_id}/members/import/steptwo]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the stage table List in form of a string
@@ -1801,7 +1801,7 @@ For use by public users uploading a fixed file format and not using the custom f
             "error": "Resource modification failed"
         }
 
-### Export members [GET /v1/lists/{list_id}/members/export]
+### Export members (Phase 1) Role:Author [GET /v1/lists/{list_id}/members/export]
 
 + Parameters
     + list_id: 1 (required, string) - ID of the List in form of a string
@@ -1978,7 +1978,7 @@ Get a list of all list members.
                 }
             }
 
-### List all members of a list [GET /v1/lists/{list_id}/members{?q}]
+### List all members of a list (Phase 1) Role:Author [GET /v1/lists/{list_id}/members{?q}]
 
 + Parameters
 
@@ -2058,7 +2058,7 @@ The Templates object.
                 "modified_by": ""
             }
 
-### Retrieve a single template [GET /v1/templates/{template_id}]
+### Retrieve a single template (Phase 1) Role:Author [GET /v1/templates/{template_id}]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -2119,7 +2119,7 @@ The Templates object.
             "error": "Resource not found" 
         }
         
-### Edit a template sections [PATCH /v1/templates/{template_id}/sections/{section_id}]
+### Edit a template sections (Phase 2) Role:Author [PATCH /v1/templates/{template_id}/sections/{section_id}]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the template in form of a string
@@ -2151,7 +2151,7 @@ The Templates object.
             "error": "Resource modification failed"
         }
 
-### Retrieve a single template sections [GET /v1/templates/{template_id}/sections]
+### Retrieve a single template sections (Phase 1) Role:Author [GET /v1/templates/{template_id}/sections]
 
 + Parameters
 
@@ -2329,7 +2329,7 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-### Retrieve a single template sections menu settings [GET /v1/templates/{template_id}/sections/settings/menu]
+### Retrieve a single template sections menu settings (Phase 1) Role:Author [GET /v1/templates/{template_id}/sections/settings/menu]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -3364,7 +3364,7 @@ Get a list of all templates.
                 }
             }
 
-### List all templates of a type [GET /v1/templates/types/{template_type}{?q}]
+### List all templates of a type (Phase 1) Role:Author [GET /v1/templates/types/{template_type}{?q}]
 
 + Parameters
 
@@ -3375,7 +3375,7 @@ Get a list of all templates.
 
     [Templates Collection][]        
 
-### List all templates in a folder [GET /v1/templates/types/{template_type}/folders/{folder_id}{?q}]
+### List all templates in a folder (Phase 1) Role:Author [GET /v1/templates/types/{template_type}/folders/{folder_id}{?q}]
 
 + Parameters
 
@@ -3644,7 +3644,7 @@ Get a list of all template folders.
                 ]
             }
 
-### List all template folders [GET /v1/templates/folders]
+### List all template folders (Phase 1) Role:Author [GET /v1/templates/folders]
 
 + Response 200
 
@@ -3688,7 +3688,7 @@ The Asset object.
                     "modified_by": ""
                 }
 
-### Retrieve a single asset library item [GET /v1/assets/{asset_id}]
+### Retrieve a single asset library item (Phase 1) Role:Author [GET /v1/assets/{asset_id}]
 
 + Parameters
     + asset_id: 1 (required, string) - ID of the asset in form of a string
@@ -3703,7 +3703,7 @@ The Asset object.
             "error": "Resource not found" 
         }
 
-### Edit an asset library item [PATCH /v1/assets/{asset_id}]
+### Edit an asset library item (Phase 1) Role:Author [PATCH /v1/assets/{asset_id}]
 
 + Parameters
     + asset_id: 1 (required, string) - ID of the asset in form of a string
@@ -3732,7 +3732,7 @@ The Asset object.
             "error": "Resource modification failed"
         }
 
-### Delete an asset library item [DELETE /v1/assets/{asset_id}]
+### Delete an asset library item (Phase 1) Role:Author [DELETE /v1/assets/{asset_id}]
 
 + Parameters
     + asset_id: 1 (required, string) - ID of the asset in form of a string
@@ -3743,7 +3743,7 @@ The Asset object.
             "result": true
         }
 
-### Create an asset library item [POST /v1/assets]
+### Create an asset library item  (Phase 1) Role:Author [POST /v1/assets]
 
 asset_binary - The raw binary file content being uploaded. Cannot be used with the asset_string parameter.
 asset_string - The base64-encoded file content being uploaded. Cannot be used with the asset__binary parameter.
@@ -3782,7 +3782,7 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
             "error": "Resource modification failed"
         }
 
-### Create an asset library folder [POST /v1/assets/folders]
+### Create an asset library folder (Phase 1) Role:Author [POST /v1/assets/folders]
 
 + Request
 
@@ -3803,7 +3803,7 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
             "error": "Resource modification failed"
         }
 
-### Edit an asset library folder [PATCH /v1/assets/folders/{folder_id}]
+### Edit an asset library folder (Phase 1) Role:Author [PATCH /v1/assets/folders/{folder_id}]
 
 + Parameters
     + folder_id: 1 (required, string) - ID of the asset folder in form of a string
@@ -3824,7 +3824,7 @@ asset_string - The base64-encoded file content being uploaded. Cannot be used wi
             "error": "Resource modification failed"
         }
 
-### Delete an asset library folder [DELETE /v1/assets/folders/{folder_id}]
+### Delete an asset library folder (Phase 1) Role:Author [DELETE /v1/assets/folders/{folder_id}]
 
 + Parameters
     + folder_id: 1 (required, string) - ID of the asset folder in form of a string
@@ -4024,7 +4024,7 @@ Get a list of all assets.
                 }
             }
 
-### List all asset library items by type [GET /v1/assets/types/{asset_type}{?q}]
+### List all asset library items by type (Phase 1) Role:Author [GET /v1/assets/types/{asset_type}{?q}]
 
 + Parameters
 
@@ -4127,7 +4127,7 @@ Get a list of all assets.
                 }
             }
 
-### List all asset library items by type in a folder [GET /v1/assets/types/{asset_type}/folders/{folder_id}]
+### List all asset library items by type in a folder (Phase 1) Role:Author [GET /v1/assets/types/{asset_type}/folders/{folder_id}]
 
 + Parameters
 
@@ -4196,7 +4196,7 @@ Get a list of all assets.
                 }
             }
     
-### List all asset library items for a template section [GET /v1/assets/templates/{template_id}/sections/{section_id}]
+### List all asset library items for a template section (Phase 1) Role:Author [GET /v1/assets/templates/{template_id}/sections/{section_id}]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -4206,7 +4206,7 @@ Get a list of all assets.
 
     [Assets Collection][]
 
-### List all asset library folders by type [GET /v1/assets/types/{asset_type}/folders]
+### List all asset library folders by type (Phase 1) Role:Author [GET /v1/assets/types/{asset_type}/folders]
 
 + Parameters
 
@@ -4309,7 +4309,7 @@ The cart object.
                       ]
                     }
 
-### Get a cart [GET /v1/carts/{cart_id}]
+### Get a cart (Phase 1) Role:Author [GET /v1/carts/{cart_id}]
 
     + Parameters
         + cart_id: 1 (required, string) - ID of the cart in form of a string
@@ -4325,7 +4325,7 @@ The cart object.
             "error": "Resource modification failed"
         }
 
-### Create a cart [POST /v1/carts]
+### Create a cart (Phase 1) Role:Author [POST /v1/carts]
 
     + Parameters
     + item_id: 1 (required, string) - ID of the item in form of a string
@@ -4348,7 +4348,7 @@ The cart object.
             "error": "Resource creation failed"
         }
 
-### Delete a cart [DELETE /v1/carts/{cart_id}]
+### Delete a cart (Phase 1) Role:Author [DELETE /v1/carts/{cart_id}]
 
 + Parameters
     + cart_id: 1 (required, string) - ID of the cart in form of a string
@@ -4359,7 +4359,7 @@ The cart object.
             "result": true
         }
         
-### Add item to cart [POST /v1/carts/{cart_id}/items]
+### Add item to cart (Phase 1) Role:Author [POST /v1/carts/{cart_id}/items]
 
     + Parameters
     
@@ -4428,7 +4428,7 @@ The cart object.
             "error": "Resource creation failed"
         }
 
-### Update an item in cart [PATCH /v1/carts/{cart_id}/items/{item_id}]
+### Update an item in cart (Phase 1) Role:Author [PATCH /v1/carts/{cart_id}/items/{item_id}]
 
     + Parameters
     + cart_id: 1 (required, string) - ID of the cart in form of a string
@@ -4468,7 +4468,7 @@ The cart object.
             "error": "Resource modification failed"
         }
 
-### Delete a line item from a cart [DELETE /v1/carts/{cart_id}/items/{item_id}]
+### Delete an item from a cart (Phase 1) Role:Author [DELETE /v1/carts/{cart_id}/items/{item_id}]
 
 + Parameters
     + cart_id: 1 (required, string) - ID of the cart in form of a string
@@ -4590,7 +4590,7 @@ The Order object.
                 }
             }
 
-### Get an order [GET /v1/orders/{order_number}]
+### Get an order (Phase 1) Role:Author [GET /v1/orders/{order_number}]
 
     + Parameters
         + order_number: 1 (required, string) -  the order number in form of a string
@@ -4606,7 +4606,7 @@ The Order object.
             "error": "Resource modification failed"
         }
 
-### Create an order for a postcard mailing [POST /v1/orders/postcards/]
+### Create an order for a postcard mailing (Phase 1) Role:Author [POST /v1/orders/postcards/]
 
 The expected_send_date is a timestamp in ISO 8601 format which specifies a date after 
 the current time and up to 45 days (TBD) in the future to send the postcard.
@@ -4793,7 +4793,7 @@ The OrderItem object.
                 }
             }
 
-### Get an order line item [GET /v1/orders/{order_number}/items/{item_id}]
+### Get an order item (Phase 2) Role:Author [GET /v1/orders/{order_number}/items/{item_id}]
 
     + Parameters
         + order_number: 1 (required, string) -  the order number in form of a string
@@ -4810,7 +4810,7 @@ The OrderItem object.
             "error": "Resource modification failed"
         }
 
-### Update an order item (ex. proof status) [PATCH /v1/postcards/{order_number}/items/{item_id}]
+### Update an order item (ex. proof status) (Phase 1) Role:Author [PATCH /v1/orders/{order_number}/items/{item_id}]
 
 + Parameters
     + order_number: 000000987654321 (required, string) - order number in form of a string
@@ -5004,7 +5004,7 @@ The EDDM Route object.
                     }
                 }
 
-### Retrieve a single carrier route [GET /v1/routes/{carrier_route}]
+### Retrieve a single carrier route (Phase 1) Role:Author [GET /v1/routes/{carrier_route}]
 
 + Parameters
     + carrier_route: 55555R001 (required, string) - USPS route number in form of a string
@@ -5088,7 +5088,7 @@ Get a list of all EDDM routes near a mailing address.
                     }
                 }
 
-### Retrieve carrier routes using an address [GET /v1/routes?address1={address1}&address2={address2}&city={city}&state={state}&zip={zip}&country={country}]
+### Retrieve carrier routes using an address (Phase 1) Role:Author [GET /v1/routes?address1={address1}&address2={address2}&city={city}&state={state}&zip={zip}&country={country}]
 
 + Request (application/json)
 
@@ -5228,7 +5228,7 @@ The Account object.
                         "modified_by": ""            
                     }
 
-### Get an account [GET /v1/accounts/{account_id}]
+### Get an account (Phase 1) Role:Author [GET /v1/accounts/{account_id}]
 
     + Parameters
         + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5244,7 +5244,7 @@ The Account object.
             "error": "Resource modification failed"
         }
 
-### Create an account [POST /v1/accounts]
+### Create an account (Phase 2) Role:Admin [POST /v1/accounts]
 
 + Request
 
@@ -5354,7 +5354,7 @@ The Account object.
             "error": "Resource creation failed"
         }
 
-### Edit an account [PATCH /v1/accounts/{account_id}]
+### Edit an account (Phase 1) Role:Admin [PATCH /v1/accounts/{account_id}]
 
     + Parameters
         + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5383,7 +5383,7 @@ The Account object.
             "error": "Resource modification failed"
         }
 
-### Delete an account setting [DELETE /v1/accounts/{account_id}]
+### Delete an account setting (Phase 1) Role:Admin [DELETE /v1/accounts/{account_id}]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5404,7 +5404,7 @@ The Account object.
             "result": true
         }
 
-### Retrieve account template defaults [GET /v1/accounts/{account_id}/templates/defaults]
+### Retrieve account template defaults (Phase 2) Role:Author [GET /v1/accounts/{account_id}/templates/defaults]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the Account in form of a string
@@ -5499,7 +5499,7 @@ The Account object.
             "error": "Resource not found" 
         }
 
-### Edit account template defaults [PATCH /v1/accounts/{account_id}/templates/defaults]
+### Edit account template defaults (Phase 2) Role:Author [PATCH /v1/accounts/{account_id}/templates/defaults]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5560,7 +5560,7 @@ The User object. Roles include admin/manager/author/viewer.
                 "modified_by": ""
             }
 
-### Retrieve a single user [GET /v1/accounts/{account_id}/users/{user_id}]
+### Retrieve a single user (Phase 1) Role:Author [GET /v1/accounts/{account_id}/users/{user_id}]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5576,7 +5576,7 @@ The User object. Roles include admin/manager/author/viewer.
             "error": "Resource not found" 
         }
 
-### Add a user [POST /v1/accounts/{account_id}/users]
+### Add a user (Phase 1) Role:Manager [POST /v1/accounts/{account_id}/users]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5605,7 +5605,7 @@ The User object. Roles include admin/manager/author/viewer.
             "error": "Resource modification failed"
         }
 
-### Edit a user [PATCH /v1/accounts/{account_id}/users/{user_id}]
+### Edit a user (Phase 1) Role:Manager [PATCH /v1/accounts/{account_id}/users/{user_id}]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5635,7 +5635,7 @@ The User object. Roles include admin/manager/author/viewer.
             "error": "Resource modification failed"
         }
 
-### Delete a user [DELETE /v1/accounts/{account_id}/users/{user_id}]
+### Delete a user (Phase 1) Role:Manager [DELETE /v1/accounts/{account_id}/users/{user_id}]
 
 + Parameters
     + user_id: 1 (required, string) - ID of the user in form of a string
@@ -5646,7 +5646,7 @@ The User object. Roles include admin/manager/author/viewer.
             "result": true
         }
 
-### Invite a user [POST /v1/accounts/{account_id}/users/invite]
+### Invite a user (Phase 2) Role:Manager [POST /v1/accounts/{account_id}/users/invite]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5730,7 +5730,7 @@ Get a list of all list users.
                 }
             }
 
-### List all users [GET /v1/accounts/{account_id}/users{?q}]
+### List all users (Phase 1) Role:Manager [GET /v1/accounts/{account_id}/users{?q}]
 
 + Parameters
 
@@ -5797,7 +5797,7 @@ The Campaign object.
                 "modified_by": ""
             }
 
-### Retrieve a single report [GET /v1/reports/{report_id}/{account_id}]
+### Retrieve a single report (Phase 1) Role:Viewer [GET /v1/reports/{report_id}/{account_id}]
 
 + Parameters
     + report_id: 1 (required, string) - ID of the report id in form of a string
