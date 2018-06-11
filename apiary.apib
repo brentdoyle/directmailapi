@@ -445,7 +445,6 @@ The Product object.
             "error": "Resource modification failed"
         }
 
-
 # Products Collection [/v1/products{?q}]
 
 Get a list of all products.
@@ -4811,7 +4810,7 @@ The OrderItem object.
             "error": "Resource modification failed"
         }
 
-### Update proof status of an order item [PATCH /v1/postcards/{order_number}/items/{item_id}]
+### Update an order item (ex. proof status) [PATCH /v1/postcards/{order_number}/items/{item_id}]
 
 + Parameters
     + order_number: 000000987654321 (required, string) - order number in form of a string
@@ -4826,7 +4825,7 @@ The OrderItem object.
     + Body 
 
             {
-                "status": "approve|reject"
+                "status": "approved|rejected"
             }
 
 + Response 200
@@ -5118,137 +5117,7 @@ Get a list of all EDDM routes near a mailing address.
         }
 
     
-
-
-## Group Postcards
-Group of all postcard-related resources.
-
-### Assign proof status of a postcard [POST /v1/postcards/{job_number}/proof]
-
-+ Parameters
-    + job_number: 000000987654321 (required, string) - Avanzado job number in form of a string
-
-
-+ Request (application/json)
-    + Headers
-    
-            Authorization: Basic ABC123
-            
-    + Body 
-
-            {
-                "proof_status": "approve|reject"
-            }
-
-+ Response 200
-
-            {
-                "job_number": "000000987654321",
-                "confirmation_number": "000000987654321",
-                "expected_delivery_date": "2018-05-27T00:00:00.000Z",
-                "proof_url": "tbd",
-            }
-
-    
-    
-+ Response 404 (application/json)
-
-        { 
-            "error": "Resource not found" 
-        }
-        
-### Create a postcard [POST /v1/postcards/send]
-
-The expected_send_date is a timestamp in ISO 8601 format which specifies a date after 
-the current time and up to 45 days (TBD) in the future to send the postcard.
-
-The merge_variables object can gave up to 40 key-value pairs. 
-Keys must be at most 40 characters and values must be at most 500 characters.
-Neither can contain the characters " and \. Nested objects are not supported.
-
-+ Request (application/json)
-    + Headers
-    
-            Authorization: Basic ABC123
-            
-    + Body 
-    
-                {
-                    "template_id": "0000-1234-5678-9012",
-                    "description": "optional mailing name"
-                    "proof": {
-                        "required": true,
-                        "proof_email": "you@email.com"           
-                    },
-                    "to": {
-                        "eddm": [
-                            { "carrier_route": "55555R001" },
-                            { "carrier_route": "55555R002" }
-                        ],
-                        "list": "{http://url}",
-                        "recipients": [
-                            {
-                                "name": "Joe Smiley",
-                                "company": null,
-                                "address_line1": "567 Maple Dr",
-                                "address_line2": "Ste 3",
-                                "address_city": "Austin",
-                                "address_state": "TX",
-                                "address_zip": "78746-1741",
-                                "address_country": "US"
-                            }
-                        ]
-                    },                    
-                    "from": {
-                        "name": "Mary Smith",
-                        "company": "The Heyl Group at Keller Williams"|null,
-                        "address_line1": "1801 S. Mo-Pac Expressway",
-                        "address_line2": "",
-                        "address_city": "Austin",
-                        "address_state": "TX",
-                        "address_zip": "78746-1741",
-                        "address_country": "US"
-                    },                    
-                    "expected_send_date": "2018-09-12 | 2018-09-12T00:00:00.967Z",
-                    "mail_type": "first_class | standard",
-                    "merge_variables": [
-                        { 
-                            "name": "agent_name",
-                            "value": "Mary Smith"
-                        },
-                        { 
-                            "name": "agent_office_name",
-                            "value": "The Heyl Group at Keller Williams"
-                        },
-                        { 
-                            "name": "agent_office_address",
-                            "value": "1801 S. Mo-Pac Expressway, Ste 100, Austin, TX 78746"
-                        },
-                        {
-                            "name": "agent_photo",
-                            "value": "{http://url}"
-                        }
-                    },
-                    "date_created": "2018-09-05T12:34:00.967Z",
-                    "date_modified": "2018-09-05T12:34:00.967Z"
-                }
-
-
-+ Response 200
-
-            {
-                "job_number": "000000987654321"
-            }
-
-
-+ Response 404 (application/json)
-
-        { 
-            "error": "Resource not found" 
-        }
-        
-
-        
+  
 # Group Accounts
 Group of all account-related resources.
 
