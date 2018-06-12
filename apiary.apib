@@ -4995,7 +4995,8 @@ The EDDM Route object.
                         ]
                     },
                     "proximity": {
-                    
+                        "miles" : 0,
+                        "label" : "exact"
                     },
                     "household_data": {
                         "household_income": "81246",
@@ -5035,7 +5036,10 @@ Get a list of all EDDM routes near a mailing address.
                     "routes": [
                         {
                             "id": "12345678901234567",
-                            "proximity": "exact",
+                            "proximity": {
+                                "miles": 0,
+                                "label": "exact"
+                            },
                             "carrier_route": "55555R001",
                             "zip_code": "55555",
                             "counts": {
@@ -5058,7 +5062,10 @@ Get a list of all EDDM routes near a mailing address.
                         },
                         {
                             "id": "23456789012345678",
-                            "proximity": "exact",
+                            "proximity": {
+                                "miles": 0,
+                                "label": "exact"
+                            },
                             "carrier_route": "R002",
                             "zip_code": "55555",
                             "counts": {
