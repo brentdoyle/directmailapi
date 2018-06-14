@@ -46,6 +46,7 @@ Exchange credentials for `access_token`. Supported types:
 + Response 200 (application/json)
     + Attributes (Server response)
 
+
 # Data Structures
 ## OAuth grant request (object)
 + `grant_type`: `client_credentials` (string, required)
@@ -157,6 +158,81 @@ We also accept dates in simple American format such as:
 ## Error States
 
 The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
+
+
+### Postcard Object
+The Postcard object.
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "template_id": "09876543210978754321",
+                "name": "Template name",
+                "size": "6.5x9",
+                "format_type": "postcard",
+                "to": {
+                    "id": "123123123123123",
+                    "name": "Kerry Jones",
+                    "company": null,
+                    "address_line1": "123 Main St",
+                    "address_line2": "",
+                    "address_city": "Austin",
+                    "address_state": "TX",
+                    "address_zip": "78746-1741",
+                    "address_country": "US"
+                },
+                "from": {
+                    "name": "Mary Smith",
+                    "company": "The Heyl Group at Keller Williams",
+                    "address_line1": "1801 S. Mo-Pac Expressway",
+                    "address_line2": "",
+                    "address_city": "Austin",
+                    "address_state": "TX",
+                    "address_zip": "78746-1741",
+                    "address_country": "US"
+                },
+                "merge_variables": [
+                    { 
+                        "name": "agent_name",
+                        "value": "Mary Smith"
+                    },
+                    { 
+                        "name": "agent_office_name",
+                        "value": "The Heyl Group at Keller Williams"
+                    },
+                    { 
+                        "name": "agent_office_address",
+                        "value": "1801 S. Mo-Pac Expressway, Ste 100, Austin, TX 78746"
+                    },
+                    {
+                        "name": "agent_photo",
+                        "value": "{http://url}"
+                    }
+                ],
+                "thumbnails": [
+                    {
+                        "small": "{http://url}",
+                        "medium": "{http://url}",
+                        "large": "{http://url}"
+                    },
+                    {
+                        "small": "{http://url}",
+                        "medium": "{http://url}",
+                        "large": "{http://url}"
+                    }
+                ],
+                "date_created": "2017-09-05T17:47:53.967Z",
+                "date_modified": "2017-09-05T17:47:53.967Z",                
+                "carrier": "USPS",
+                "mail_type": "standard_class|first_class",
+                "requested_send_date": "2018-09-12 | 2018-09-12T00:00:00.967Z",
+                "expected_send_date": "2017-09-12",
+                "actual_send_date": "2017-09-012",
+                "status": "pending|completed|cancelled"
+            }
+                
 
 
 # Group Products
@@ -1993,10 +2069,10 @@ Get a list of all list members.
 
 
 
-# Group Templates
+# Group Postcards
 Group of all template-related resources.
 
-## Templates [/v1/templates/{template_id}]
+## Postcards [/v1/postcards/{postcard_id}]
 
 The Templates object.
 
@@ -2061,14 +2137,14 @@ The Templates object.
                 "modified_by": ""
             }
 
-### Retrieve a single template (Phase 1) Role:Author [GET /v1/templates/{template_id}]
+### Retrieve a single postcard (Phase 1) Role:Author [GET /v1/postcards/{postcard_id}]
 
 + Parameters
-    + template_id: 1 (required, string) - ID of the Template in form of a string
+    + postcard_id: 1 (required, string) - ID of the postcard in form of a string
     
 + Response 200
 
-    [Templates][]
+    [Postcards][]
 
 + Response 404 (application/json)
 
@@ -2076,7 +2152,7 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-### DUPLICATE Retrieve a single coupon template [GET /v1/templates/coupons/{template_id}]
+### DUPLICATE Retrieve a single coupon template [GET /v1/postcards/coupons/{postcard_id}]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -2122,10 +2198,10 @@ The Templates object.
             "error": "Resource not found" 
         }
         
-### Edit a template sections (Phase 2) Role:Author [PATCH /v1/templates/{template_id}/sections/{section_id}]
+### Edit a template sections (Phase 2) Role:Author [PATCH /v1/postcards/{postcard_id}/sections/{section_id}]
 
 + Parameters
-    + template_id: 1 (required, string) - ID of the template in form of a string
+    + postcard_id: 1 (required, string) - ID of the postcard in form of a string
     + section_id: 1 (required, string) - ID of the section in form of a string
     
 + Request (application/json)
@@ -2154,11 +2230,11 @@ The Templates object.
             "error": "Resource modification failed"
         }
 
-### Retrieve a single template sections (Phase 1) Role:Author [GET /v1/templates/{template_id}/sections]
+### Retrieve a single postcards sections (Phase 1) Role:Author [GET /v1/postcards/{postcard_id}/sections]
 
 + Parameters
 
-    + template_id (optional, string) ... .
+    + postcard_id (optional, string)
 
 + Response 200
 
@@ -2279,7 +2355,7 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-### DUPLICATE Retrieve a single coupon template sections [GET /v1/templates/coupons/{template_id}/sections]
+### DUPLICATE Retrieve a single coupon template sections [GET /v1/postcards/coupons/{postcard_id}/sections]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -2332,10 +2408,10 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-### Retrieve a single template sections menu settings (Phase 1) Role:Author [GET /v1/templates/{template_id}/sections/settings/menu]
+### Retrieve a single postcards sections menu settings (Phase 1) Role:Author [GET /v1/postcards/{postcard_id}/sections/settings/menu]
 
 + Parameters
-    + template_id: 1 (required, string) - ID of the Template in form of a string
+    + postcard_id: 1 (required, string) - ID of the postcard in form of a string
 
 + Response 200
 
@@ -2608,7 +2684,7 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-### DUPLICATE Retrieve a single coupon template sections menu settings [GET /v1/templates/coupons/{template_id}/sections/settings/menu]
+### DUPLICATE Retrieve a single coupon template sections menu settings [GET /v1/postcards/coupons/{postcard_id}/sections/settings/menu]
 
 + Parameters
     + template_id: 1 (required, string) - ID of the Template in form of a string
@@ -2950,9 +3026,7 @@ The Templates object.
             "error": "Resource not found" 
         }
 
-
-
-# Templates Collection [/v1/templates{?q}]
+# Postcards Collection [/v1/postcards{?q}]
 
 Get a list of all templates.
 
@@ -2961,7 +3035,7 @@ Get a list of all templates.
     + Body
 
             {
-                "templates": [
+                "postcard": [
                 {
                     "id": "000000000000000000126",
                     "template_type": "directmail",
@@ -3225,7 +3299,7 @@ Get a list of all templates.
                 }
             }
 
-### DUPLICATE List all templates of type "coupon" [GET /v1/templates/types/coupons{?q}]
+### DUPLICATE List all postcards of type "coupon" [GET /v1/postcards/types/coupons{?q}]
 
 + Parameters
 
@@ -3367,7 +3441,7 @@ Get a list of all templates.
                 }
             }
 
-### List all templates of a type (Phase 1) Role:Author [GET /v1/templates/types/{template_type}{?q}]
+### List all postcards of a type (Phase 1) Role:Author [GET /v1/postcards/types/{template_type}{?q}]
 
 + Parameters
 
@@ -3376,9 +3450,9 @@ Get a list of all templates.
 
 + Response 200
 
-    [Templates Collection][]        
+    [Postcards Collection][]        
 
-### List all templates in a folder (Phase 1) Role:Author [GET /v1/templates/types/{template_type}/folders/{folder_id}{?q}]
+### List all postcards in a folder (Phase 1) Role:Author [GET /v1/postcards/types/{template_type}/folders/{folder_id}{?q}]
 
 + Parameters
 
@@ -3388,9 +3462,9 @@ Get a list of all templates.
 
 + Response 200
 
-    [Templates Collection][]        
+    [Postcards Collection][]        
 
-### DUPLICATE List all templates in a folder of type "coupon" [GET /v1/templates/types/coupons/folders/{folder_id}{?q}]
+### DUPLICATE List all postcards in a folder of type "coupon" [GET /v1/postcards/types/coupons/folders/{folder_id}{?q}]
 
 + Parameters
 
@@ -3529,9 +3603,9 @@ Get a list of all templates.
                 }
             }
   
-# Template Folders Collection [/v1/templates/folders]
+# Postcards Folders Collection [/v1/postcards/folders]
 
-Get a list of all template folders.
+Get a list of all postcard folders.
 
 + Model (application/json)
 
@@ -3647,11 +3721,11 @@ Get a list of all template folders.
                 ]
             }
 
-### List all template folders (Phase 1) Role:Author [GET /v1/templates/folders]
+### List all postcards folders (Phase 1) Role:Author [GET /v1/postcards/folders]
 
 + Response 200
 
-    [Template Folders Collection][]
+    [Postcards Folders Collection][]
     
    
 
@@ -4611,115 +4685,18 @@ The Order object.
 
 ### Create an order for a postcard mailing (Phase 1) Role:Author [POST /v1/orders/postcards/]
 
-The expected_send_date is a timestamp in ISO 8601 format which specifies a date after 
-the current time and up to 45 days (TBD) in the future to send the postcard.
-
-The merge_variables object can gave up to 40 key-value pairs. 
-Keys must be at most 40 characters and values must be at most 500 characters.
-Neither can contain the characters " and \. Nested objects are not supported.
++ Attributes (PostcardOrderItem)
 
 + Request (application/json)
     + Headers
     
             Authorization: Basic ABC123
             
-    + Body 
-    
-                {
-                    "order": {
-                      "currency": {
-                        "name": "US Dollars",
-                        "code": "USD",
-                        "symbol": "$",
-                        "decimal_places": 2
-                      },
-                      "coupons": [
-                        {
-                          "id": "1",
-                          "code": "abcde1",
-                          "display_name": "$5.00 off the order total",
-                          "coupon_type": "per_total_discount",
-                          "discounted_amount": 5
-                        }
-                      ],
-                      "discounts": [
-                        {
-                          "name": "Free Shipping",
-                          "discounted_amount": 7
-                        }
-                      ],
-                      "line_items": [
-                        {
-                          "physical_items": [
-                            {
-                              "id": "8235d47d-718b-4b9c-89a4-5fa1ee76a0b4",
-                              "variant_id": 182,
-                              "product_id": 118,
-                              "name": "BigCommerce Hoodies",
-                              "url": "http://your-store.mybigcommerce.com/hoodies/",
-                              "quantity": 2,
-                              "is_taxable": true,
-                              "image_url": "https://cdn8.bigcommerce.com/some-string/themes/ClassicNext/images/ProductDefault.gif",
-                              "discounts": [
-                                {
-                                  "name": "Free Shipping",
-                                  "discountedAmount": 7
-                                }
-                              ],
-                              "discount_amount": 0,
-                              "coupon_amount": 0,
-                              "list_price": 100,
-                              "sale_price": 100,
-                              "extended_list_price": 100,
-                              "extended_sale_price": 100,
-                              "type": "physical",
-                              "is_shipping_required": true
-                            }
-                          ],
-                          "digital_items": [
-                            {
-                              "quantity": 0,
-                              "discounts": [
-                                {
-                                  "name": "Free Shipping",
-                                  "discounted_amount": 7
-                                }
-                              ],
-                              "download_file_urls": []
-                            }
-                          ],
-                          "gift_certificate": [
-                            {
-                              "type": "giftCertificate"
-                            }
-                          ]
-                        }
-                      ],
-                      "billingAddress": {
-                        "country": "USA",
-                        "email": "janedoe@email.com",
-                        "firstName": "Jane",
-                        "lastName": "Doe",
-                        "company": "BigCommerce",
-                        "street1": "123 Main Street",
-                        "street2": "Apt 1",
-                        "city": "Austin",
-                        "countryCode": "USA",
-                        "postalCode": "12345",
-                        "customFields": [
-                          {}
-                        ]
-                      },
-                      "status": "INCOMPLETE"
-                    }
-                }
+    + Body
 
 
 + Response 200
 
-            {
-                "job_number": "000000987654321"
-            }
 
 
 + Response 404 (application/json)
@@ -4727,7 +4704,7 @@ Neither can contain the characters " and \. Nested objects are not supported.
         { 
             "error": "Resource not found" 
         }
-        
+
 
 
 # Group OrderItems [/v1/orders/{order_number}/items/]
@@ -4796,7 +4773,7 @@ The OrderItem object.
                 }
             }
 
-### Get an order item (Phase 2) Role:Author [GET /v1/orders/{order_number}/items/{item_id}]
+### Get an order item (Phase 1) Role:Author [GET /v1/orders/{order_number}/items/{item_id}]
 
     + Parameters
         + order_number: 1 (required, string) -  the order number in form of a string
@@ -5656,7 +5633,7 @@ The User object. Roles include admin/manager/author/viewer.
             "result": true
         }
 
-### Invite a user (Phase 2) Role:Manager [POST /v1/accounts/{account_id}/users/invite]
+### Invite a user (Phase 1) Role:Manager [POST /v1/accounts/{account_id}/users/invite]
 
 + Parameters
     + account_id: 1 (required, string) - ID of the account in form of a string
@@ -5822,3 +5799,65 @@ The Campaign object.
         { 
             "error": "Resource not found" 
         }
+        
+
+
+# Data Structures
+
+## Postcard (object)
+
++ postcard_id: 12345678901234567 (string, required) - if of the postcard
++ proofing: (required) - define if a proofing step is needed
+    + required: true (boolean)
+    + email_address: `john@abc.com` (string)
+    + status: pending (string)
++ template_name: `postcard one` (string) - Template name
++ to: (required) - Define the recipients of the postcard
+    + members: (array[MemberObj])
+    + routes: (array[RouteObj])
+    + lists: (array[ListObj])
++ from: (required) - Define the mail return address
+    + name: `Mary Smith` (string)
+    + company: `Heyl Group` (string)
+    + address_line1: `12345 Main St` (string)
+    + address_line1: null (string)
+    + address_city: Austin (string)
+    + address_state: TX (string)
+    + address_zip: 55555-5555 (string)
+    + address_country: US (string)
++ merge_variables: (array[MergeVariables], optional) - The object can gave up to 40 key-value pairs pre-defined for the postcard. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters " and \. Nested objects are not supported.
++ size: `6.5x9` (string)
++ mail_type: `standard_class` (string)
++ send_date: `2017-09-12` (string)
++ expected_delivery_date: `2018-09-12` (string)
+
+
+## MemberObj (object)
+
++ id: 345654321 (string)
++ name: `Kerry Jones` (string)
++ company: null (string)
++ address_line1: `12345 Main St` (string)
++ address_line1: null (string)
++ address_city: Austin (string)
++ address_state: TX (string)
++ address_zip: 55555-5555 (string)
++ address_country: US (string)
+
+## RouteObj (object)
+
++ usps_route: 555550123 (string)
+
+## ListObj (object)
+
++ id: 1234567890 (string)
+
+## MergeVariables (object)
+
++ name: firstname (string) - template variable name
++ value: Joseph (string) - template variable data
+
+
+## PostcardOrderItem (object)
+
++ product_type (Postcard)
