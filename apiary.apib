@@ -4523,9 +4523,10 @@ The Order object.
 
             {
                 "id": "11111-11111-11111-11111-11111",
-                "name": "test campaign",
+                "name": "Test campaign",
                 "description": "Campaign one descr",
-                "campaignId": "futureuse",
+                "campaignId": "12345678",
+                "campaignType": "scheduled",
                 "amount": 490.43,
                 "tax": 0,
                 "fees": 0,
@@ -4535,13 +4536,13 @@ The Order object.
                         /* orderItem object */
                     }
                 ],
-                "billing_address": {
+                "billingAddress": {
                     "name": "Bill Billington",
-                    "first_name": "Bill",
-                    "last_name": "Billington",
+                    "firstName": "Bill",
+                    "lastName": "Billington",
                     "company": "Bills R US",
-                    "address_1": "123 Bill St.",
-                    "address_2": "Apt. B",
+                    "address1": "123 Bill St.",
+                    "address2": "Apt. B",
                     "city": "Billtown",
                     "state": "CA",
                     "zip": "01234",
@@ -4549,25 +4550,30 @@ The Order object.
                     "phone": "555-555-5555",
                     "email": "bill@bills.com"
                 },
-                "shipping_address": {
+                "shippingAddress": {
                     "name": "Ship Shippington",
-                    "first_name": "Ship",
-                    "last_name": "Shipington",
+                    "firstName": "Ship",
+                    "lastName": "Shipington",
                     "company": "Shipping 4 Less",
-                    "address_1": "123 Ship St.",
-                    "address_2": "null",
+                    "address1": "123 Ship St.",
+                    "address2": "null",
                     "city": "Shipville",
                     "state": "CA",
                     "zip": "01234",
                     "country": "United States",
                     "phone": "555-555-5555",
                     "email": "ship@shipping.com"
-                },                
-                "status": "draft|processing|completed|cancelled",
-                "date_created":"2017-09-15T14:38:16+00:00",
-                "last_changed":"2017-09-15T14:38:16+00:00",
-                "created_by":"",
-                "modified_by":""                
+                },
+                "status": "draft",
+                "paging": {
+                    "total": 4,
+                    "page": 1,
+                    "pages": 1
+                },
+                "dateCreated":"2017-09-15T14:38:16+00:00",
+                "lastChanged":"2017-09-15T14:38:16+00:00",
+                "createdBy":"",
+                "modifiedBy":""                
             }
 
 ### Get an order (Phase 1) Role:Author [GET /v1/orders/{order_number}]
@@ -5845,22 +5851,22 @@ The User object. Roles include admin/manager/author/viewer.
             {
                 "id": "852aaa9532cb36adfb5e9fef7a4206a9",
                 "active": true,
-                "first_name": "Roger",
-                "last_name": "Wilco",
-                "email_address": "roger@googleco.com",
-                "user_name": "rwilco",
+                "firstName": "Roger",
+                "lastName": "Wilco",
+                "emailAddress": "roger@googleco.com",
+                "userName": "rwilco",
                 "password": "abcdef",
                 "role": "admin",
                 "timezone": "",
                 "profile_pic_binary": "",
                 "profile_pic_string": "data:image/jpeg;base64,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",                
-                "accepted_invitation": true,
-                "org_name": "Google Inc",
-                "account_id": "1234a1234a1234a1234a1234a",
-                "date_created": "2017-09-15T14:38:16+00:00",
-                "last_changed": "2017-09-15T14:38:16+00:00",
-                "created_by": "",
-                "modified_by": ""
+                "acceptedInvitation": true,
+                "orgName": "Acme Inc",
+                "accountId": "1234a1234a1234a1234a1234a",
+                "dateCreated": "2017-09-15T14:38:16+00:00",
+                "dateUpdated": "2017-09-15T14:38:16+00:00",
+                "createdUser": "",
+                "updatedUser": ""
             }
 
 ### Get a single user (Phase 1) Role:Author [GET /v1/accounts/{account_id}/users/{user_id}]
