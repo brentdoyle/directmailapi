@@ -174,312 +174,89 @@ The Product object.
 
             {
                 "product": {
-                    "name": "test postcard",
-                    "description" : "TEST POSTCARD",
+                    "id": "0000-11111-00000-11111-0000",
+                    "name": "Postcard One",
+                    "description" : "Your postcard description",
                     "image": "postcard_image.jpg",
-                    "producttype": "postcard",
-                    "options": {
-                        "size": "6x9",
-                        "thumbnail": "http://chryslerondemandsmart.com/Assets/Templates/Thumbnail/139_Maintenance_Combo_2017.jpg",
-                        "preview": "http://chryslerondemandsmart.com/Assets/Templates/preview/139_Maintenance_Combo_2017.jpg",
-                        "highres": "http://chryslerondemandsmart.com/Assets/Templates/highres/139_Maintenance_Combo_2017.jpg",
-                        "variants": {
-                            "folds": [
-                                {
-                                    "value": "none",
-                                    "unitPrice": 0.00,
-                                    "discounts": [
-                                        {
-                                            "type": "sale",
-                                            "amount": 0.00
-                                        }
-                                    ]
-                                }
-                            ],
-                            "paperStock": [
-                                {
-                                    "value": "100 lb",
-                                    "unitPrice": 0.00,
-                                    "discounts": [
-                                        {
-                                            "type": "sale",
-                                            "amount": 0.00
-                                        }
-                                    ]
-                                }                               
-                            ],
-                            "coating": [
-                                {
-                                    "value": "none",
-                                    "unitPrice": 0.00,
-                                    "discounts": [
-                                        {
-                                            "type": "sale",
-                                            "amount": 0.00
-                                        }
-                                    ]
-                                }                              
-                            ],
-                        },
-                        "templateContent": {
-                            "panels": [
-                                {
-                                    "name": "panel 1",
-                                    "description": "panel 1 description",
-                                    "seq": 1,
-                                    "assets": [
-                                        {
-                                            "code": "position1",
-                                            "value": "Just Sold!",
-                                            "type": "text"
-                                        },
-                                        {
-                                            "code": "position2",
-                                            "value": "http://url".
-                                            "type": "image"
-                                        }                                            
-                                    ]
-                                },
-                                {
-                                    "name": "panel 2",
-                                    "description": "panel 2 description",
-                                    "seq": 2,
-                                    "assets": [
-                                        {
-                                            "code": "position1",
-                                            "value": "Joe Smith"
-                                        },
-                                        {
-                                            "code": "position2",
-                                            "value": "Heyl Group ReMax"
-                                        }                                            
-                                    ]
-                                }                                    
-                            ]
-                        }
-                    },
-                    "pricing": [
-                        {
-                            "type": "directmail",
-                            "basePrice": {
-                                "rate": "unit",
-                                "ranges": [
-                                    {
-                                        "quantity": 5000,
-                                        "unitPrice": 0.45
-                                    },
-                                    {
-                                        "quantity": 10000,
-                                        "unitPrice": 0.39
-                                    },
-                                    {
-                                        "quantity": 25000,
-                                        "unitPrice": 0.28
-                                    },
-                                    {
-                                        "quantity": 50000,
-                                        "unitPrice": 0.21
-                                    }
-                                ],
-                                "discounts": [
-                                    {
-                                        "type": "sale",
-                                        "amount": 0.05
-                                    }
-                                ]
-                            },
-                            "deliveryOptions": {
-                                "rate": "unit",
-                                "fulfillmentType": "postage",
-                                "isShippingRequired": false,
-                                "options": [
-                                    {
-                                        "carrier": "USPS",
-                                        "mailType": "First class",
-                                        "ranges": [
-                                            {
-                                                "quantity": 5000,
-                                                "unitPrice": 0.45
-                                            },
-                                            {
-                                                "quantity": 10000,
-                                                "unitPrice": 0.39
-                                            },
-                                            {
-                                                "quantity": 25000
-                                            },
-                                            {
-                                                "quantity": 50000,
-                                                "unitPrice": 0.21
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "carrier": "USPS",
-                                        "mailType": "Standard class",
-                                        "ranges": [
-                                            {
-                                                "quantity": 5000,
-                                                "unitPrice": 0.45
-                                            },
-                                            {
-                                                "quantity": 10000,
-                                                "unitPrice": 0.39
-                                            },
-                                            {
-                                                "quantity": 25000,
-                                                "unitPrice": 0.28
-                                            },
-                                            {
-                                                "quantity": 50000,
-                                                "unitPrice": 0.21
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "carrier": "USPS",
-                                        "mailType": "EDDM",
-                                        "ranges": [
-                                            {
-                                                "quantity": 5000,
-                                                "unitPrice": 0.21
-                                            },
-                                            {
-                                                "quantity": 10000,
-                                                "unitPrice": 0.20
-                                            },
-                                            {
-                                                "quantity": 25000,
-                                                "unitPrice": 0.19
-                                            },
-                                            {
-                                                "quantity": 50000,
-                                                "unitPrice": 0.18
-                                            }
-                                        ]
-                                    }
-                                ],
-                                "discounts": [
-                                    {
-                                        "type": "sale",
-                                        "amount": 0.00
-                                    }
-                                ]
-                            }
-                        },
-                        "discounts": [
+                    "code": "POSTCARD",                    
+                    "basePrice": 0,
+                    "thumbnail": "http://chryslerondemandsmart.com/Assets/Templates/Thumbnail/139_Maintenance_Combo_2017.jpg",
+                    "preview": "http://chryslerondemandsmart.com/Assets/Templates/preview/139_Maintenance_Combo_2017.jpg",
+                    "highres": "http://chryslerondemandsmart.com/Assets/Templates/highres/139_Maintenance_Combo_2017.jpg",
+                    "panels": [
+                        "id": "21212-21212121-2121212121-212121212",
+                        "name": "panel 1 name",
+                        "seq": 1,
+                        "templateContent": [
                             {
-                                "type": "coupon",
-                                "amount": 32.02
-                            }
-                        ],                        
-                        {
-                            "type": "dropship",
-                            "basePrice": {
-                                "rate": "unit",
-                                "ranges": [
-                                    {
-                                        "quantity": 5000,
-                                        "unitPrice": 0.45
-                                    },
-                                    {
-                                        "quantity": 10000,
-                                        "unitPrice": 0.39
-                                    },
-                                    {
-                                        "quantity": 25000,
-                                        "unitPrice": 0.28
-                                    },
-                                    {
-                                        "quantity": 50000,
-                                        "unitPrice": 0.21
-                                    }
-                                ],
-                                "discounts": [
-                                    {
-                                        "type": "sale",
-                                        "amount": 0.00
-                                    }
-                                ]
+                                "type": "text",
+                                "content": "Hello!",
+                                "code": "POSITION1"
                             },
-                            "deliveryOptions": {
-                                "rate": "flat",
-                                "fulfillmentType": "transit",
-                                "isShippingRequired": true,                                
-                                "options": [
-                                    {
-                                        "carrier": "FedEx",
-                                        "mailType": "Ground",
-                                        "ranges": [
-                                            {
-                                                "quantity": 5000,
-                                                "unitPrice": 18.00
-                                            },
-                                            {
-                                                "quantity": 10000,
-                                                "unitPrice": 25.00
-                                            },
-                                            {
-                                                "quantity": 25000,
-                                                "unitPrice": 42.00
-                                            },
-                                            {
-                                                "quantity": 50000,
-                                                "unitPrice": 68.00
-                                            }
-                                        ]
-                                    }
-                                ],
-                                "discounts": [
-                                    {
-                                        "type": "sale",
-                                        "amount": 0.00
-                                    }
-                                ]
+                            {
+                                "type": "image",
+                                "content": "http://url",
+                                "code": "POSITION2"
                             }
-                        },
-                        {
-                            "type": "download",
-                            "basePrice": {
-                                "rate": "unit",
-                                "ranges": [
-                                    {
-                                        "quantity": 1,
-                                        "unitPrice": 3.00
-                                    }
-                                ],
-                                "discounts": [
-                                    {
-                                        "type": "sale",
-                                        "amount": 0.00
-                                    }
-                                ]
-                            },
-                            "deliveryOptions": {
-                                "rate": "flat",
-                                "fulfillmentType": "file",
-                                "isShippingRequired": false,                                
-                                "options": [{}],
-                                "discounts": [
-                                    {
-                                        "type": "sale",
-                                        "amount": 0.00
-                                    }
-                                ]
-                            }
-                        }
+                        ]
                     ],
+                    "variants": {
+                        "folds": [
+                            {
+                                "value": "none",
+                                "unitPrice": 0.00,
+                                "discounts": [
+                                    {
+                                        "type": "sale",
+                                        "amount": 0.00
+                                    }
+                                ]
+                            }
+                        ],
+                        "paperStock": [
+                            {
+                                "value": "100 lb",
+                                "unitPrice": 0.00,
+                                "discounts": [
+                                    {
+                                        "type": "sale",
+                                        "amount": 0.00
+                                    }
+                                ]
+                            }                               
+                        ],
+                        "coating": [
+                            {
+                                "value": "none",
+                                "unitPrice": 0.00,
+                                "discounts": [
+                                    {
+                                        "type": "sale",
+                                        "amount": 0.00
+                                    }
+                                ]
+                            }                              
+                        ],
+                    },
+                    "deliveryMethod": {
+                        "id": "313131-3131313131-313131-3131313",
+                        "code": "POSTAGE",
+                        "name": "First Class",
+                        "description": "USPS First Class mailing",
+                        "price": 0
+                    },                    
                     "folders": [
                         {
-                            "id": "0000000000000000001",
+                            "id": "00000-00000-00000-0001",
                             "name": "Brakes"
                         },
                         {
-                            "id": "0000000000000000002",
+                            "id": "00000-00000000000002",
                             "name": "Maintenance"
                         }                        
                     ],
-                    "active": true,
+                    "parentId": "55555-11111-55555-11111-55555",
+                    "activeFlag": true,
                     "date_created": "2017-09-15T14:38:16+00:00",
                     "last_changed": "2017-09-15T14:38:16+00:00",
                     "created_by": "",
@@ -4357,53 +4134,33 @@ The Order object.
     + Body
 
             {
-                "id": "11111-11111-11111-11111-11111",
-                "name": "Test campaign",
-                "description": "Campaign one descr",
-                "campaignId": "12345678",
-                "campaignType": "scheduled",
-                "amount": 490.43,
-                "tax": 0,
-                "fees": 0,
-                "discounts": 37.60
-                "items": [
-                    {
-                        /* orderItem object */
-                    }
-                ],
-                "billingAddress": {
-                    "name": "Bill Billington",
-                    "firstName": "Bill",
-                    "lastName": "Billington",
-                    "company": "Bills R US",
-                    "address1": "123 Bill St.",
-                    "address2": "Apt. B",
-                    "city": "Billtown",
-                    "state": "CA",
-                    "zip": "01234",
-                    "country": "United States",
-                    "phone": "555-555-5555",
-                    "email": "bill@bills.com"
-                },
-                "shippingAddress": {
-                    "name": "Ship Shippington",
-                    "firstName": "Ship",
-                    "lastName": "Shipington",
-                    "company": "Shipping 4 Less",
-                    "address1": "123 Ship St.",
-                    "address2": "null",
-                    "city": "Shipville",
-                    "state": "CA",
-                    "zip": "01234",
-                    "country": "United States",
-                    "phone": "555-555-5555",
-                    "email": "ship@shipping.com"
-                },
-                "status": "draft",
-                "dateCreated":"2017-09-15T14:38:16+00:00",
-                "lastChanged":"2017-09-15T14:38:16+00:00",
-                "createdBy":"",
-                "modifiedBy":""                
+                "order": {
+                    "id": "11111-11111-11111-11111-11111",
+                    "name": "Test campaign",
+                    "description": "Campaign one descr",
+                    "campaign": {
+                        "campaignId": "12345678",
+                        "campaignName": "Your Campaign name",
+                        "campaignType": "scheduled",
+                    },
+                    "items": [
+                        {
+                            /* orderItem object */
+                        }
+                    ],
+                    "price": {
+                        "taxRate": 0,
+                        "subtotal": 0,
+                        "total": 0
+                    },
+                    "status": "DRAFT",
+                    "accountId": "000-00000-00000-00000-0000",
+                    "activeFlag": true,
+                    "dateCreated":"2018-09-15T14:38:16+00:00",
+                    "lastChanged":"2018-09-15T14:38:16+00:00",
+                    "createdBy":"",
+                    "modifiedBy":""                
+                }
             }
 
 ### Get an order (Phase 1) Role:Author [GET /v1/orders/{order_number}]
@@ -4682,11 +4439,51 @@ The OrderItem object.
 
                 {
                     "id": "827d-718b-4b9c-89a4-a0b4",
+                    "description": "order item description",
                     "quantity": 1,
-                    "isTaxable": true,
-                    "options": {
+                    "taxable": true,
+                    "product": {
                         (Product)
                     },
+                    "deliveryMethod": {
+                        "price": 0
+                    },
+                    "recipients": {
+                        "lists": [
+                            "list id",
+                            "list id"
+                        ],
+                        "members": [
+                            "firstName": "first name",
+                            "lastName": "last name",
+                            "address1": "address",
+                            "address2": "address 2",
+                            "city": "city",
+                            "state": "state",
+                            "zip": "zip",
+                            "country": "US"
+                        ],
+                        "routes": [
+                            "55555R001",
+                            "55555R002"
+                        ]                 
+                    },
+                    "price": {
+                        "basePrice": 0,
+                        "variantPrice": 0,
+                        "discountsApplied": 0,
+                        "unitPrice": 0,
+                        "deliveryPrice": 0,
+                        "total": 0
+                    },
+                    "proofEmail": "",
+                    "requestedSendDate": "2018-09-22",
+                    "productVariants": [
+                        (Variants)
+                    ],
+                    "orderId": "11111-11111-11111-11111-11111",
+                    "activeFlag": true,
+                    "status": "DRAFT",
                     "amount": 4900,
                     "tax": 100,
                     "fees": 0,
