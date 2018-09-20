@@ -180,12 +180,19 @@ The Product object.
                     "image": "bundle_image.jpg",
                     "code": "TESTBUND",                    
                     "basePrice": 0,
-                    "thumbnail": "http://chryslerondemandsmart.com/Assets/Templates/Thumbnail/139_Maintenance_Combo_2017.jpg",
-                    "preview": "http://chryslerondemandsmart.com/Assets/Templates/preview/139_Maintenance_Combo_2017.jpg",
-                    "highres": "http://chryslerondemandsmart.com/Assets/Templates/highres/139_Maintenance_Combo_2017.jpg",
+                    "mailtype": "EDDM",
+                    "dimensions": {
+                        "id": "777777-a333-b4444-c55555-000000",
+                        "name": "6 1/2 x 9",
+                        "width": 2700,
+                        "height": 1950
+                    },
                     "panels": [
                         "id": "21212-21212121-2121212121-212121212",
                         "name": "Panel 1",
+                        "thumbnail": "http://chryslerondemandsmart.com/Assets/Templates/Thumbnail/139_Maintenance_Combo_2017.jpg",
+                        "preview": "http://chryslerondemandsmart.com/Assets/Templates/preview/139_Maintenance_Combo_2017.jpg",
+                        "highres": "http://chryslerondemandsmart.com/Assets/Templates/highres/139_Maintenance_Combo_2017.jpg",                        
                         "seq": 1,
                         "templateContent": [
                             {
@@ -1211,12 +1218,142 @@ This is step 1 of 2 where the file is uploaded to the server only.
 + Response 200
 
             {
-                "FailureDetails": [],
-                "TotalUniqueMembersSubmitted": 0,
-                "TotalExistingMembers": 0,
-                "TotalNewMembers": 0,
-                "DuplicateMembersInSubmission": []
-            }
+                "success": true,
+                "message": "addressList.csv uploaded successfully",
+                "filename": "addressList.csv",
+                "sample": [
+                    [
+                        "First Name",
+                        "Last Name",
+                        "Address Line 1",
+                        "Address Line 2",
+                        "City",
+                        "State/Province",
+                        "Country",
+                        "Zip code",
+                        "Company",
+                        "Email",
+                        "Phone"
+                    ],
+                    [
+                        "Slyvia",
+                        "Pedone",
+                        "59229 Turtle Circle Court",
+                        "Apt 476",
+                        "Evelina",
+                        "North Carolina",
+                        "US",
+                        "93047",
+                        "Test Company",
+                        "Slyvia.Pedone@gmail.com",
+                        "124-948-2987"
+                    ],
+                    [
+                        "Yuk",
+                        "Manriquez",
+                        "53250 Lancashire Drive",
+                        "Apt 71",
+                        "Irene",
+                        "North Carolina",
+                        "US",
+                        "4870",
+                        "Test Company",
+                        "Yuk.Manriquez@gmail.com",
+                        "324-880-9792"
+                    ],
+                    [
+                        "Aracely",
+                        "Harsh",
+                        "52516 Forestville Street",
+                        "Apt 908",
+                        "Slyvia",
+                        "Colorado",
+                        "US",
+                        "63833",
+                        "Test Company",
+                        "Aracely.Harsh@gmail.com",
+                        "353-465-1031"
+                    ],
+                    [
+                        "Cathy",
+                        "Vanallen",
+                        "84632 Greenbrook Court",
+                        "Apt 390",
+                        "Chery",
+                        "Oregon",
+                        "US",
+                        "28501",
+                        "Test Company",
+                        "Cathy.Vanallen@gmail.com",
+                        "391-559-0300"
+                    ],
+                    [
+                        "Shantae",
+                        "Boykin",
+                        "11173 Gateway Boulevard",
+                        "Apt 378",
+                        "Morgan",
+                        "Washington",
+                        "US",
+                        "49600",
+                        "Test Company",
+                        "Shantae.Boykin@gmail.com",
+                        "139-739-6866"
+                    ],
+                    [
+                        "Shanice",
+                        "Bugg",
+                        "87041 Hunt Club Boulevard",
+                        "Apt 927",
+                        "Jewell",
+                        "Washington",
+                        "US",
+                        "87664",
+                        "Test Company",
+                        "Shanice.Bugg@gmail.com",
+                        "910-304-4282"
+                    ],
+                    [
+                        "Jewell",
+                        "Mangus",
+                        "27156 Dewberry Street",
+                        "Apt 797",
+                        "Dionne",
+                        "Louisiana",
+                        "US",
+                        "7473",
+                        "Test Company",
+                        "Jewell.Mangus@gmail.com",
+                        "835-637-4638"
+                    ],
+                    [
+                        "Ute",
+                        "Nierman",
+                        "13452 Muirwood Drive",
+                        "Apt 848",
+                        "Marivel",
+                        "Utah",
+                        "US",
+                        "27376",
+                        "Test Company",
+                        "Ute.Nierman@gmail.com",
+                        "521-630-2141"
+                    ],
+                    [
+                        "Arminda",
+                        "Everhart",
+                        "8476 Legends Trail",
+                        "Apt 425",
+                        "Oma",
+                        "Florida",
+                        "US",
+                        "96700",
+                        "Test Company",
+                        "Arminda.Everhart@gmail.com",
+                        "903-251-3976"
+                    ]
+                ]
+        }
         
 + Response 400 (application/json)
 
